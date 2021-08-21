@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_planning_graph"
+    app:startDestination="@id/planningListFragment">
+
+    <fragment
+        android:id="@+id/planningFragment"
+        android:name="com.example.myapplication.ui.fragments.planning.PlanningFragment"
+        android:label="fragment_planning"
+        tools:layout="@layout/fragment_planning" />
+    <fragment
+        android:id="@+id/planningListFragment"
+        android:name="com.example.myapplication.ui.fragments.planning.PlanningListFragment"
+        android:label="fragment_planning_list"
+        tools:layout="@layout/fragment_planning_list" >
+        <action
+            android:id="@+id/action_planningListFragment_to_planningFragment"
+            app:destination="@id/planningFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/planningListFragment" />
+    </fragment>
+</navigation>
