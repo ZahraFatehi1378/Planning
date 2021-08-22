@@ -31,6 +31,7 @@
         <entry key="..\:/Users/zahra/Desktop/git projects/MyApplication/app/src/main/res/layout/take_planning_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/MyApplication/app/src/main/res/menu/drawer_menu.xml" value="0.4" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable-v24/bg_row_simple.xml" value="0.26615384615384613" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable-v24/paxs.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable/bg_button.xml" value="0.1" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable/bg_icon.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable/bg_option_box.xml" value="0.26615384615384613" />
@@ -41,15 +42,19 @@
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/drawable/ic_setting.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/activity_all_courses.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/activity_paxs.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/activity_planing.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/course_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/faculty_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/fragment_courses_list.xml" value="0.264" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/fragment_paxs.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/fragment_planning.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/fragment_planning_list.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/menu_header.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/menu_header.xml" value="0.6" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/pax_dialog.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/planning_item.xml" value="0.4" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/layout/take_planning_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/menu/drawer_menu.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/zahra/Desktop/git projects/Planning/MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.10648148148148148" />
       </map>
     </option>

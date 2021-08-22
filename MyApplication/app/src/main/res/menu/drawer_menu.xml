@@ -6,6 +6,11 @@
     <group>
 
         <item
+            android:id="@+id/paxs"
+            android:icon="@drawable/paxs"
+            android:title="بسته های دانشکده" />
+
+        <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_setting"
             android:title="تنظیمات" />
@@ -13,6 +18,7 @@
             android:id="@+id/information"
             android:icon="@drawable/information"
             android:title="درباره ما" />
+
     </group>
 
 </menu>

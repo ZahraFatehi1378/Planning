@@ -1276,6 +1276,519 @@ public class PlaningActivity extends AppCompatActivity {
     }
 
     private void addMathPlannings() {
+        Planning planning10110501 = new Planning(
+                10110501,
+                1011050 ,
+                "مسائلی (سعیدی مدنی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110501);
+
+        Planning planning10110502 = new Planning(
+                10110502,
+                1011050 ,
+                "مسائلی (سعیدی مدنی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110502);
+
+        Planning planning10110503 = new Planning(
+                10110503,
+                1011050 ,
+                "گرمرودی (سعیدی مدنی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110503);
+
+        Planning planning10110504 = new Planning(
+                10110504,
+                1011050 ,
+                "گرمرودی (سعیدی مدنی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110504);
+
+
+
+        Planning planning10110505 = new Planning(
+                10110505,
+                1011050 ,
+                "رشیدی(کیانی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110505);
+
+        Planning planning10110506 = new Planning(
+                10110506,
+                1011050 ,
+                "برزگر (کیانی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110506);
+
+        Planning planning10110507 = new Planning(
+                10110507,
+                1011050 ,
+                "محمدی حلیکدانی (روشندل توانا) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110507);
+
+        Planning planning10110508 = new Planning(
+                10110508,
+                1011050 ,
+                "زمانی (روشندل توانا) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110508);
+
+        Planning planning10110509 = new Planning(
+                10110509,
+                1011050 ,
+                "آتش افروز (نجفی سقزچی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning10110509);
+
+        Planning planning101105010 = new Planning(
+                101105010,
+                1011050 ,
+                "آتش افروز (نجفی سقزچی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105010);
+
+        Planning planning101105011 = new Planning(
+                101105011 ,
+                1011050 ,
+                "اسلامی(نجفی سقزچی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105011);
+
+        Planning planning101105012= new Planning(
+                101105012 ,
+                1011050 ,
+                "اسلامی(نجفی سقزچی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105012);
+
+        Planning planning101105013 = new Planning(
+                101105013,
+                1011050 ,
+                "فرجی(نجفی سقزچی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105013);
+
+        Planning planning101105014 = new Planning(
+                101105014,
+                1011050 ,
+                "رشیدی(خسروی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105014);
+
+        Planning planning101105015 = new Planning(
+                101105015,
+                1011050 ,
+                "ابطحی(خسروی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105015);
+
+        Planning planning101105016 = new Planning(
+                101105016,
+                1011050 ,
+                "ابطحی(خسروی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105016);
+
+        Planning planning101105017 = new Planning(
+                101105017,
+                1011050 ,
+                "شواخ(بروجردیان) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105017);
+
+        Planning planning101105018 = new Planning(
+                101105018,
+                1011050 ,
+                "شواخ(بروجردیان) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105018);
+
+        Planning planning101105019 = new Planning(
+                101105019,
+                1011050 ,
+                "احمدی (رستمی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105019);
+
+        Planning planning101105020 = new Planning(
+                101105020,
+                1011050 ,
+                "احمدی (رستمی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105020);
+
+        Planning planning101105021 = new Planning(
+                101105021,
+                1011050 ,
+                "بیات (رستمی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105021);
+
+        Planning planning101105022 = new Planning(
+                101105022,
+                1011050 ,
+                "عبدی لر (هنری) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105022);
+
+        Planning planning101105023 = new Planning(
+                101105023,
+                1011050 ,
+                "عبدی لر (هنری) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105023);
+
+        Planning planning101105024 = new Planning(
+                101105024,
+                1011050 ,
+                "ابراهیمی میمند (ساکی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105024);
+
+        Planning planning101105025 = new Planning(
+                101105025,
+                1011050 ,
+                "ابراهیمی میمند (ساکی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105025);
+
+        Planning planning101105026 = new Planning(
+                101105026,
+                1011050 ,
+                "سعیدی (ایمانفر) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105026);
+
+        Planning planning101105027 = new Planning(
+                101105027,
+                1011050 ,
+                "سعیدی (ایمانفر) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105027);
+
+        Planning planning101105028 = new Planning(
+                101105028,
+                1011050 ,
+                "رحیمی پور (علی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105028);
+
+        Planning planning101105029 = new Planning(
+                101105029,
+                1011050 ,
+                "رحیمی پور (علی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105029);
+
+        Planning planning101105030 = new Planning(
+                101105030,
+                1011050 ,
+                "زارعی (پورعباس) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105030);
+
+        Planning planning101105031 = new Planning(
+                101105031,
+                1011050 ,
+                "آبگینه ساز (اخلاقی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105031);
+
+        Planning planning101105032 = new Planning(
+                101105032,
+                1011050 ,
+                "آبگینه ساز (اخلاقی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105032);
+
+        Planning planning101105033 = new Planning(
+                101105033,
+                1011050 ,
+                "پاشایی (پیربداقی) ",
+                new ArrayList<String>(){{add("چهار شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105033);
+
+        Planning planning101105034 = new Planning(
+                101105034,
+                1011050 ,
+                "پاشایی (پیربداقی) ",
+                new ArrayList<String>(){{add("پنج شنبه");}},
+                "13",
+                "15",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        mathPlannings.add(planning101105034);
+
+
 
 
         Planning planning101125313 = new Planning(
@@ -1655,20 +2168,6 @@ public class PlaningActivity extends AppCompatActivity {
         mathPlannings.add(planning101105312);
 
 
-        Planning planning101105034 = new Planning(
-                10105034 ,
-                101150 ,
-                "پاشایی",
-                new ArrayList<String>(){{add("پنج شنبه");}},
-                "13",
-                "15",
-                "0",
-                "0",
-                0,
-                0 ,"هردو"
-        );
-
-        mathPlannings.add(planning101105034);
 
         Planning planning10110531 = new Planning(
                 10110531 ,
@@ -2711,7 +3210,20 @@ public class PlaningActivity extends AppCompatActivity {
     }
 
     private void addEnglishPlannings() {
+        Planning planning10610211 = new Planning(
+                10610211 ,
+                1061021 ,
+                "رضائی سواد کوهی",
+                new ArrayList<String>(){{add("شنبه");}},
+                "8",
+                "10",
+                "9" ,
+                "10" ,
+                21 ,
+                10 ,"هردو"
+        );
 
+        englishPlannings.add(planning10610211);
     }
 
     private void addIndustrialPlannings() {
@@ -3095,20 +3607,323 @@ public class PlaningActivity extends AppCompatActivity {
     }
 
     private void addPhysicPlannings() {
-        Planning planning10213507 = new Planning(
-                10213507 ,
-                1021350 ,
-                "صنایعی",
-                new ArrayList<String>(){{add("چهارشنبه");}},
+
+        Planning planning10213031 = new Planning(
+                10213031 ,
+                1021303 ,
+                "محمدیان",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "8",
                 "10",
-                "12",
-                "0" ,
-                "0" ,
-                0 ,
-                0 ,"هردو"
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
         );
 
-        physicPlannings.add(planning10213507);
+        physicPlannings.add(planning10213031);
+
+        Planning planning10213032 = new Planning(
+                10213032 ,
+                1021303 ,
+                "طالبی",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "10",
+                "12",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213032);
+
+        Planning planning10213033 = new Planning(
+                10213033 ,
+                1021303 ,
+                "محمدیان",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "10",
+                "12",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213033);
+
+        Planning planning10213034 = new Planning(
+                10213034 ,
+                1021303 ,
+                "خاکیان",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213034);
+
+        Planning planning10213035 = new Planning(
+                10213035 ,
+                1021303 ,
+                "حبیبیان",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213035);
+
+        Planning planning10213036 = new Planning(
+                10213036 ,
+                1021303 ,
+                "صبا",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213036);
+
+        Planning planning10213037 = new Planning(
+                10213037 ,
+                1021303 ,
+                "ابراهیمی",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213037);
+
+        Planning planning10213038 = new Planning(
+                10213038 ,
+                1021303 ,
+                "بوالی",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213038);
+
+        Planning planning10213039 = new Planning(
+                10213039 ,
+                1021303 ,
+                "صبا",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213039);
+
+        Planning planning102130310 = new Planning(
+                102130310 ,
+                1021303 ,
+                "حبیبی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "8",
+                "10",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130310);
+
+        Planning planning102130311 = new Planning(
+                102130311 ,
+                1021303 ,
+                "مرصوصی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "10",
+                "12",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130311);
+
+        Planning planning102130312 = new Planning(
+                102130312 ,
+                1021303 ,
+                "مهدوی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "10",
+                "12",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130312);
+
+        Planning planning102130313 = new Planning(
+                102130313 ,
+                1021303 ,
+                "اشعری آستانی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130313);
+
+        Planning planning102130314 = new Planning(
+                102130314 ,
+                1021303 ,
+                "ایرجی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130314);
+
+        Planning planning102130315 = new Planning(
+                102130315 ,
+                1021303 ,
+                "عراقی کزاز",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130315);
+
+        Planning planning102130316 = new Planning(
+                102130316 ,
+                1021303 ,
+                "عراقی کزاز",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130316);
+
+        Planning planning102130317 = new Planning(
+                102130317 ,
+                1021303 ,
+                "ایرجی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130317);
+
+        Planning planning102130318 = new Planning(
+                102130318 ,
+                1021303 ,
+                "رضایی اوچبلاغ",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130318);
+
+        Planning planning102130319 = new Planning(
+                102130319 ,
+                1021303 ,
+                "درودی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "15",
+                "17",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130319);
+
+        Planning planning102130320 = new Planning(
+                102130320 ,
+                1021303 ,
+                "عباسی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "10:45",
+                "12:15",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130320);
+
+        Planning planning102130321 = new Planning(
+                102130321 ,
+                1021303 ,
+                "عباسی",
+                new ArrayList<String>(){{add("یکشنبه");add("سه شنبه");}},
+                "10",
+                "12",
+                "9" ,
+                "11" ,
+                27 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning102130321);
+
+
 
         Planning planning10213531 = new Planning(
                 10213531 ,
@@ -3125,20 +3940,9 @@ public class PlaningActivity extends AppCompatActivity {
 
         physicPlannings.add(planning10213531);
 
-        Planning planning10213532 = new Planning(
-                10213532 ,
-                1021353 ,
-                "شمسائی زفرقندی",
-                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
-                "13",
-                "15",
-                "9" ,
-                "11" ,
-                22 ,
-                10 ,"هردو"
-        );
 
-        physicPlannings.add(planning10213532);
+
+
 
         Planning planning10213533 = new Planning(
                 10213533 ,
@@ -3169,6 +3973,40 @@ public class PlaningActivity extends AppCompatActivity {
         );
 
         physicPlannings.add(planning10213534);
+
+
+        Planning planning10213507 = new Planning(
+                10213507 ,
+                1021350 ,
+                "صنایعی",
+                new ArrayList<String>(){{add("چهارشنبه");}},
+                "10",
+                "12",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213507);
+
+
+        Planning planning10213532 = new Planning(
+                10213532 ,
+                1021353 ,
+                "شمسائی زفرقندی",
+                new ArrayList<String>(){{add("شنبه");add("دوشنبه");}},
+                "13",
+                "15",
+                "9" ,
+                "11" ,
+                22 ,
+                10 ,"هردو"
+        );
+
+        physicPlannings.add(planning10213532);
+
+
 
         Planning planning10223711 = new Planning(
                 10223711 ,
@@ -6207,7 +7045,7 @@ public class PlaningActivity extends AppCompatActivity {
                 1051012,
                 " موسوي قدمگاهي",
                 new ArrayList<String>() {{
-                    add("سه شنبه");
+                    add("شنبه");
                 }},
                 "15",
                 "17",
@@ -6219,6 +7057,57 @@ public class PlaningActivity extends AppCompatActivity {
 
         generalPlannings.add(planning10510125);
 
+        Planning planning105120315 = new Planning(
+                105120315,
+                1051203,
+                "فروزانفر",
+                new ArrayList<String>() {{
+                    add("یکشنبه");
+                    add("سه شنبه");
+                }},
+                "16:30",
+                "18",
+                "9",
+                "11",
+                23,
+                10, "آقایان"
+        );
+
+        generalPlannings.add(planning105120315);
+
+        Planning planning10516223 = new Planning(
+                10516223,
+                1051622,
+                " حقیقت طلب بیجارپسی",
+                new ArrayList<String>() {{
+                    add("يکشنبه");
+                }},
+                "13",
+                "15",
+                "13",
+                "15",
+                28,
+                10, "خانمها"
+        );
+
+        generalPlannings.add(planning10516223);
+
+        Planning planning10516224 = new Planning(
+                10516224,
+                1051622,
+                " حقیقت طلب بیجارپسی",
+                new ArrayList<String>() {{
+                    add("سه شنبه");
+                }},
+                "15",
+                "17",
+                "13",
+                "15",
+                28,
+                10, "خانمها"
+        );
+
+        generalPlannings.add(planning10516224);
 
         Planning planning10510321 = new Planning(
                 10510321,
@@ -6295,7 +7184,7 @@ public class PlaningActivity extends AppCompatActivity {
                 1051012,
                 " موسوي قدمگاهي",
                 new ArrayList<String>() {{
-                    add("سه شنبه");
+                    add("شنبه");
                 }},
                 "13",
                 "15",
@@ -6751,7 +7640,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511221 = new Planning(
                 10511221,
-                1051112,
+                1051122,
                 " کرمي ورنامخواستي",
                 new ArrayList<String>() {{
                     add("دوشنبه");
@@ -6768,7 +7657,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511222 = new Planning(
                 10511222,
-                1051112,
+                1051122,
                 " کرمي ورنامخواستي",
                 new ArrayList<String>() {{
                     add("سه شنبه");
@@ -6785,7 +7674,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511223 = new Planning(
                 10511223,
-                1051112,
+                1051122,
                 " کياشمشکي",
                 new ArrayList<String>() {{
                     add("چهارشنبه");
@@ -6803,7 +7692,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511224 = new Planning(
                 10511224,
-                1051112,
+                1051122,
                 " کياشمشکي",
                 new ArrayList<String>() {{
                     add("چهارشنبه");
@@ -6820,7 +7709,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511225 = new Planning(
                 10511225,
-                1051112,
+                1051122,
                 " ياوري",
                 new ArrayList<String>() {{
                     add("چهارشنبه");
@@ -6837,7 +7726,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511226 = new Planning(
                 10511226,
-                1051112,
+                1051122,
                 " ياوري",
                 new ArrayList<String>() {{
                     add("چهارشنبه");
@@ -6855,7 +7744,7 @@ public class PlaningActivity extends AppCompatActivity {
 
         Planning planning10511227 = new Planning(
                 10511227,
-                1051112,
+                1051122,
                 " اردستاني",
                 new ArrayList<String>() {{
                     add("دوشنبه");

@@ -17,6 +17,7 @@ import com.example.myapplication.model.Course;
 import com.example.myapplication.model.Planning;
 import com.example.myapplication.storage.shared_prefrences.SharedPreferencesClass;
 import com.example.myapplication.storage.shared_prefrences.Utils;
+import com.example.myapplication.ui.dialogs.PaxesDialog;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -165,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.information: {
+            }
+            case R.id.paxs: {
+                PaxesDialog paxesDialog = new PaxesDialog(this ,industrialCourses);
             }
         }
         return true;

@@ -56,7 +56,6 @@ public class TakePlanningDialog  {
                     .setCancelable(true)
                     .setPositiveButton("تایید", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog1, int which) {
-                            //todo check in available to take
                             addPlanningListener.addPlanning(planning);
                             Toast.makeText(context, "افزوده شد", Toast.LENGTH_SHORT).show();
                         }
