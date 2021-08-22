@@ -39,11 +39,11 @@ public class PlanningsListAdaptor extends RecyclerView.Adapter<PlanningsListAdap
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.instructor.setText(plannings.get(position).getInstructor());
-        holder.planningCourseNameTV.setText(course.getName());
+        holder.planningCourseNameTV.setText("         "+course.getName()+"           ");
         holder.gender.setText(plannings.get(position).getGender());
         for (String day :plannings.get(position).getDaysOfWeek())
         holder.daysOfWeek.setText(day);
-        holder.examDate.setText(plannings.get(position).getStartTimeExam()+"-"+plannings.get(position).getEndTimeExam());
+        holder.examDate.setText(": تاریخ امتحان "+plannings.get(position).getStartTimeExam()+"-"+plannings.get(position).getEndTimeExam() );
         holder.class_time.setText(plannings.get(position).getStartTime()+"-"+plannings.get(position).getEndTime());
     }
 

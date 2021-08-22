@@ -52,6 +52,7 @@ public class StringsListAdaptor extends RecyclerView.Adapter<StringsListAdaptor.
         public void onClick(View v) {
             if (onItemClickListener != null ) {
                 onItemClickListener.onItemClicked(strings.get(getAdapterPosition()));
+                onItemClickListener.onItemClickedPos(getAdapterPosition());
             }
         }
     }

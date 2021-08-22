@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ import com.example.myapplication.storage.shared_prefrences.Utils;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     public static SharedPreferencesClass sharedPreferencesClass;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addPhysicCourses();
         addGeneralCourses();
         addIndustrialCourses();
+
         addEnglishCourses();
         addSportCourses();
     }
@@ -311,11 +317,278 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void addIndustrialCourses() {
 
+        Course course2581152 = new Course(
+                2581152 ,
+                2,
+                " روش تحقیق و گزارش نویسی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(45);}}
+        );
+        industrialCourses.add(course2581152);
+
+        Course course2533843 = new Course(
+                2533843 ,
+                3,
+                " بهینه سازی ۱" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2533103);add(2500133);}}
+        );
+        industrialCourses.add(course2533843);
+
+        Course course2533840 = new Course(
+                2533840 ,
+                0,
+                " تدریسیار بهینه سازی ۱" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2533103);add(2500133);}}
+        );
+        industrialCourses.add(course2533840);
+
+
+        Course course2515273 = new Course(
+                2515273 ,
+                3,
+                " آمار مهندسی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2500133);}}
+        );
+        industrialCourses.add(course2515273);
+
+        Course course2510391 = new Course(
+                2510391 ,
+                1,
+                " آز ارزیابی کار و زمان" ,
+                "دانشکده صنایع",
+                "تخصصی : بسته مهندسی صنایع",
+                new ArrayList<Integer>()
+                {{add(2515393);}}
+        );
+        industrialCourses.add(course2510391);
+
+
+        Course course2512342 = new Course(
+                2512342 ,
+                2,
+                " آز اندازه گیری دقیق و کنترل کیفیت" ,
+                "دانشکده صنایع",
+                "تخصصی : بسته مهندسی صنایع",
+                new ArrayList<Integer>()
+                {{add(1011053);add(2513303);}}
+        );
+        industrialCourses.add(course2512342);
+
+
+        Course course2515483 = new Course(
+                2515483 ,
+                3,
+                " طرح ریزی واحدهای صنعتی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2515393);}}
+        );
+        industrialCourses.add(course2515483);
+
+
+        Course course2515683 = new Course(
+                2515683 ,
+                3,
+                " مدیریت و کنترل پروژه" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2533843);}}
+        );
+        industrialCourses.add(course2515683);
+
+
+        Course course2515723 = new Course(
+                2515723 ,
+                3,
+                " برنامه ریزی نگهداری و تعمیرات" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(2515023);}}
+        );
+        industrialCourses.add(course2515723);
+
+
+        Course course2516153 = new Course(
+                2516153 ,
+                3,
+                " مهندسی فاکتورهای انسانی" ,
+                "دانشکده صنایع",
+                "تخصصی:بسته مهندسی صنایع",
+                new ArrayList<Integer>()
+                {{add(2515393);}}
+        );
+        industrialCourses.add(course2516153);
+
+
+        Course course2519213 = new Course(
+                2519213 ,
+                3,
+                " سیستمهای پرداخت حقوق و دستمزد" ,
+                "دانشکده صنایع",
+                "بسته مدیریت اجرایی",
+                new ArrayList<Integer>()
+                {{add(2500123);add(75);}}
+        );
+        industrialCourses.add(course2519213);
+
+
+        Course course2519293 = new Course(
+                2519293 ,
+                3,
+                " اصول شبیه سازی" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(1011353);add(2515273);}}
+        );
+        industrialCourses.add(course2519293);
+
+        Course course2524153 = new Course(
+                2524153 ,
+                3,
+                " برنامه ریزی حمل و نقل و لجستیک" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(2533843);}}
+        );
+        industrialCourses.add(course2524153);
+
+
+        Course course2529253 = new Course(
+                2529253 ,
+                3,
+                " برنامه ریزی تولید" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(2515423);}}
+        );
+        industrialCourses.add(course2529253);
+
+
+        Course course2533183 = new Course(
+                2533183 ,
+                3,
+                " تحلیل داده و اطلاعات" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(1011353);add(2515273);}}
+        );
+        industrialCourses.add(course2533183);
+
+
+        Course course2547510 = new Course(
+                2547510 ,
+                0,
+                " پروژه مهندسی صنایع" ,
+                "دانشکده صنایع",
+                "تخصصی",
+                new ArrayList<Integer>()
+                {{add(2581152);add(100);}}
+        );
+        industrialCourses.add(course2547510);
+
+
+
+        industrialCourses.add(course2519293);
+        Course course2515733 = new Course(
+                2515733 ,
+                3,
+                "سیستمهای اطلاعات مدیریت" ,
+                "دانشکده صنایع",
+                "تخصصی" ,
+                new ArrayList<Integer>()
+                {{add(1011353);add(2526103);add(1011253);add(1011103);add(1011053);}}
+        );
+        industrialCourses.add(course2515733);
+
+        Course course2515572 = new Course(
+                2515572 ,
+                2,
+                "اصول مدیریت و تئوری سازمان" ,
+                "دانشکده صنایع",
+                "اصلی" ,
+                new ArrayList<Integer>()
+                {{add(50);add(2500123);add(2533153);add(1011053);}}
+        );
+        industrialCourses.add(course2515572);
+
+        Course course2515423 = new Course(
+                2515423 ,
+                3,
+                "برنامه ریزی و کنترل موجودی 1" ,
+                "دانشکده صنایع",
+                "اصلی" ,
+                new ArrayList<Integer>()
+                {{add(2533843);add(2533103);add(2500133);add(1011103);add(1011053);}}
+        );
+        industrialCourses.add(course2515423);
+
+        Course course2515420 = new Course(
+                2515420 ,
+                0,
+                "تدریسیار کنترل موجودی 1" ,
+                "دانشکده صنایع",
+                "اصلی" ,
+                new ArrayList<Integer>()
+                {{add(0);}}
+        );
+        industrialCourses.add(course2515420);
+
+        Course course2515393 = new Course(
+                2515393 ,
+                3,
+                "ارزیابی کار و زمان" ,
+                "دانشکده صنایع",
+                "اصلی" ,
+                new ArrayList<Integer>()
+                {{add(30);add(2513303);add(2515153);}}
+        );
+        industrialCourses.add(course2515393);
+
+        Course course2515063 = new Course(
+                2515063 ,
+                3,
+                "مباحث ویژه (تحلیل و هوشمندی کسب وکار)" ,
+                "دانشکده صنایع",
+                "بسته سیستم های اطلاعاتی" ,
+                new ArrayList<Integer>()
+                {{add(1011353);add(2515273);add(2500133);add(1011103);}}
+        );
+        industrialCourses.add(course2515063);
+
+        Course course2500143 = new Course(
+                2500143 ,
+                3,
+                "بهینه سازی 2" ,
+                "دانشکده صنایع",
+                "اصلی" ,
+                new ArrayList<Integer>()
+                {{add(2533843);add(2533103);add(2500133);add(1011103);add(1011053);}}
+        );
+        industrialCourses.add(course2500143);
+
         Course course2500123 = new Course(
                 2500123 ,
                 3,
                 "اصول حسابداری" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(2533153);add(30);}}
@@ -326,7 +599,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2500130 ,
                 0,
                 "تدریس یار نظریه احتمال و کاربرد ها" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1011103);}}
@@ -337,7 +610,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2500133 ,
                 3,
                 "نظریه احتمال و کاربرد ها" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1011103);}}
@@ -348,7 +621,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2515023 ,
                 3,
                 "اقتصاد مهندسی" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(2533153);}}
@@ -359,7 +632,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2515153 ,
                 3,
                 "علم مواد" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(30);}}
@@ -370,7 +643,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2533153 ,
                 3,
                 "مبانی اقتصاد" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1011053);}}
@@ -381,7 +654,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2533103 ,
                 3,
                 " جبر خطی" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1011053);}}
@@ -392,7 +665,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2021723 ,
                 3,
                 "مبانی برق 2" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1021353);}}
@@ -403,7 +676,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 2021720 ,
                 0,
                 "تدریس یار مبانی برق 2" ,
-                "دانشکده",
+                "دانشکده صنایع",
                 "اصلی" ,
                 new ArrayList<Integer>()
                 {{add(1021353);}}

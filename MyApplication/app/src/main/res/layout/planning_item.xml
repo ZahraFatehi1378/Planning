@@ -12,18 +12,24 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:textSize="24sp"
+        android:fontFamily="@font/font"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/planning_course_name"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/font"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="planningName"
         android:textSize="15sp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,6 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="instructor"
+        android:textColor="@color/black"
+        android:fontFamily="@font/font"
+
         app:layout_constraintBottom_toTopOf="@+id/day_of_week"
         app:layout_constraintEnd_toEndOf="@+id/number2"
         app:layout_constraintTop_toBottomOf="@+id/planning_course_name" />
@@ -42,6 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/font"
+
         app:layout_constraintBottom_toTopOf="@+id/gender"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="12dp"
@@ -50,8 +62,11 @@
     <TextView
         android:id="@+id/day_of_week"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/font"
+
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
         android:layout_marginBottom="8dp"
         android:text="sdfdsg"
         android:textSize="12dp"
@@ -63,9 +78,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:fontFamily="@font/font"
+
         android:layout_marginBottom="8dp"
         android:text="dsfdf"
         android:textSize="12dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day_of_week" />
 
@@ -75,9 +93,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/font"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="10dp"
+        android:textColor="@color/black"
         android:text="gender"/>
 
 

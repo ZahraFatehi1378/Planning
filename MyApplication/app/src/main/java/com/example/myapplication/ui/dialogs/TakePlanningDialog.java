@@ -4,9 +4,16 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +25,7 @@ import com.example.myapplication.recycler.PlanningsListAdaptor;
 
 import java.util.ArrayList;
 
-public class TakePlanningDialog extends Dialog {
+public class TakePlanningDialog  {
 
     private PlanningsListAdaptor planningsAdaptor;
     private AddPlanningListener addPlanningListener;
@@ -28,12 +35,12 @@ public class TakePlanningDialog extends Dialog {
     }
 
     public TakePlanningDialog(@NonNull final Context context , ArrayList<Planning> plannings , Course course) {
-        super(context);
         final Dialog dialog = new Dialog(context);
 
-        dialog.setContentView(R.layout.take_planning_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getCurrentFocus();
         dialog.setCancelable(true);
+        dialog.setContentView(R.layout.take_planning_dialog);
         RecyclerView recyclerView = dialog.findViewById(R.id.planningRecyclerView2);
         planningsAdaptor = new PlanningsListAdaptor(plannings , course);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -42,29 +49,43 @@ public class TakePlanningDialog extends Dialog {
         planningsAdaptor.setOnItemClickListener(planning -> {
             // Continue with delete operation
             AlertDialog x = new AlertDialog.Builder(context)
-                    .setTitle("افزودن واحد")
-                    .setMessage("not completed")
+                    .setMessage(course.getName()+" \n "+planning.getStartTime()+"-"+planning.getEndTime()+" "+planning.getDaysOfWeek()
+                    +"\n"+planning.getStartTimeExam()+"-"+planning.getEndTimeExam()+"___"
+                            +("1400"+"/"+planning.getMonthOfExam() +"/"+planning.getDayOfExam())+"تاریخ و ساعت امتحان"+"\n"
+                    +planning.getInstructor() +"  ("+planning.getGender()+")")
                     .setCancelable(true)
-
-                    .setPositiveButton("تایید", new OnClickListener() {
+                    .setPositiveButton("تایید", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog1, int which) {
-                            //todo add to database
+                            //todo check in available to take
                             addPlanningListener.addPlanning(planning);
+                            Toast.makeText(context, "افزوده شد", Toast.LENGTH_SHORT).show();
                         }
                     })
 
-                    .setNegativeButton(android.R.string.no, null)
+
+
+                    .setNegativeButton("لفو", null)
+
                     .show();
+
+            Typeface face=ResourcesCompat.getFont(context,R.font.font);
+
+            TextView textView = (TextView) x.findViewById(android.R.id.message);
+            textView.setTypeface(face);
+            textView.setTextColor(Color.BLACK);
+
+
+            Button button = x.getButton(Dialog.BUTTON_POSITIVE);
+            button.setTypeface(face);
+            button.setTextColor(Color.BLACK);
+
+            Button button2 = x.getButton(Dialog.BUTTON_NEGATIVE);
+            button2.setTypeface(face);
+            button2.setTextColor(Color.BLACK);
 
             x.getWindow().setBackgroundDrawableResource(R.drawable.bg_row);
         });
-
-
-
         dialog.show();
-
-
-
     }
 
 

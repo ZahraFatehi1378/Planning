@@ -67,9 +67,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/font"
+
         android:layout_marginEnd="16dp"
-        android:text="courseName"
-        android:textColor="@color/black"
+        android:text=""
+        android:textColor="?android:textColorPrimary"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/coursesRecyclerView" />
@@ -80,11 +82,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="کد درس"
+        android:text="      کد درس:"
+        android:fontFamily="@font/font"
+
         android:textSize="20sp"
+        android:textColor="?android:textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/course_name"
-        android:textColor="@color/black"
         />
 
     <TextView
@@ -93,11 +97,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="تعداد واحد"
+        android:fontFamily="@font/font"
+
+        android:text="تعداد واحد:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
@@ -106,11 +112,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:text="پیش نیاز ها"
+        android:fontFamily="@font/font"
+
+        android:text="پیش نیاز ها:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
@@ -118,23 +126,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/font"
+
         android:layout_marginEnd="16dp"
-        android:text="گروه یا بسته"
+        android:text="      گروه یا بسته:"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
         android:id="@+id/course_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/font"
+
         android:layout_marginStart="16dp"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
@@ -143,9 +155,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textSize="20sp"
+        android:fontFamily="@font/font"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView4"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
@@ -153,10 +167,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/font"
+
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
     <TextView
@@ -166,9 +182,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:textSize="20sp"
+        android:fontFamily="@font/font"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         />
 
 

@@ -41,8 +41,7 @@
         <com.example.myapplication.ui.table.CustomTable
             android:id="@+id/customTable"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_row" />
+            android:layout_height="wrap_content" />
     </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,9 @@
         android:color="#16A0B9FC"/>
     <corners android:radius="20dp"/>
 
+    <size
+        android:width="20dp"
+        android:height="20dp"
+        />
+
 </shape>

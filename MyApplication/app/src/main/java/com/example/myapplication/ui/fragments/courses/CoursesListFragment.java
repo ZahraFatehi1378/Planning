@@ -65,10 +65,10 @@ public class CoursesListFragment extends Fragment {
     protected void setBg(String sTheme) {
         switch (sTheme) {
             case "dark":
-                mainLayout.setBackgroundResource(R.drawable.main_bg_dark);
+                mainLayout.setBackgroundResource(R.drawable.dd);
                 break;
             case "bright":
-                mainLayout.setBackgroundResource(R.drawable.main_bg_bright);
+                mainLayout.setBackgroundResource(R.drawable.db);
                 break;
         }
     }
@@ -90,34 +90,43 @@ public class CoursesListFragment extends Fragment {
 
         //add faculties
         facultiesRecyclerView = view.findViewById(R.id.faculties_recycler);
-        facultiesRecyclerView.setAdapter(new StringsListAdaptor(facultiesList, string -> {
-            tempCourses.clear();
-            switch (string) {
-                case "عمومی":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).generalCourses);
-                    break;
-                case "دانشکده صنایع":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).industrialCourses);
-                    break;
-                case "فیزیک":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).physicCourses);
+        facultiesRecyclerView.setAdapter(new StringsListAdaptor(facultiesList, new OnStringClickListener() {
+            @Override
+            public void onItemClicked(String course) {
 
-                    break;
-                case "ریاضی":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).mathCourses);
+                tempCourses.clear();
+                switch (course) {
+                    case "عمومی":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).generalCourses);
+                        break;
+                    case "دانشکده صنایع":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).industrialCourses);
+                        break;
+                    case "فیزیک":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).physicCourses);
 
-                    break;
-                case "زبان":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).englishCourses);
+                        break;
+                    case "ریاضی":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).mathCourses);
 
-                    break;
-                case "تربیت بدنی":
-                    tempCourses.addAll(((AllCoursesActivity) requireActivity()).sportCourses);
+                        break;
+                    case "زبان":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).englishCourses);
 
-                    break;
+                        break;
+                    case "تربیت بدنی":
+                        tempCourses.addAll(((AllCoursesActivity) requireActivity()).sportCourses);
+
+                        break;
+                }
+
+                ca.notifyDataSetChanged();
             }
 
-            ca.notifyDataSetChanged();
+            @Override
+            public void onItemClickedPos(int pos) {
+
+            }
         }));
         facultiesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
 

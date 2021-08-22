@@ -28,9 +28,7 @@ public class CoursesListAdaptor extends RecyclerView.Adapter<CoursesListAdaptor.
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-    //    holder.numTV.setText((position+1)+"");
         holder.courseTV.setText(courses.get(position).getName());
-   //     holder.creditsTV.setText((courses.get(position).getCredits())+"واحد");
 
     }
 
