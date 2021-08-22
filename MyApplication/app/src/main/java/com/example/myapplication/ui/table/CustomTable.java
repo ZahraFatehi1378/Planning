@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -69,7 +70,7 @@ public class CustomTable extends FrameLayout {
 
 
 
-    public void addView(String text ,float right2, float top2 , float width2){
+    public void addView(Integer planningId ,String text ,float right2, float top2 , float width2 , CustomCourseTableListener customCourseTableListener){
         TextView v = new TextView(getContext());
         addView(v, initLayoutParams((int) (right2* width + width), (int) (top2*height+marginTop), (int) (width2*width),height));
         v.setText(text);
@@ -78,6 +79,13 @@ public class CustomTable extends FrameLayout {
         v.setBackgroundColor(colors[random.nextInt(4)]);
         v.setTypeface(face);
         v.setTextSize(12);
+        v.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v2) {
+                customCourseTableListener.shewDeleteDialog(planningId , v);
+                return false;
+            }
+        });
     }
 
     private void addBaseViews() {

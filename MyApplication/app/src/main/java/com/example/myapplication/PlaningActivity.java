@@ -2746,35 +2746,9 @@ public class PlaningActivity extends AppCompatActivity {
 
         industrialPlannings.add(planning25133031);
 
-        Planning planning25123422 = new Planning(
-                25123422 ,
-                2512342 ,
-                "نوروزی",
-                new ArrayList<String>(){{add("چهارشنبه");}},
-                "13:30",
-                "16:30",
-                "9" ,
-                "11" ,
-                19 ,
-                10 ,"هردو"
-        );
 
-        industrialPlannings.add(planning25123422);
 
-        Planning planning25123421 = new Planning(
-                25123421 ,
-                2512342 ,
-                "نوروزی",
-                new ArrayList<String>(){{add("چهارشنبه");}},
-                "8",
-                "11",
-                "9" ,
-                "11" ,
-                19 ,
-                10 ,"هردو"
-        );
 
-        industrialPlannings.add(planning25123421);
         Planning planning25103912 = new Planning(
                 25103912 ,
                 2510391 ,

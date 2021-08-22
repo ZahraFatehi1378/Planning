@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -47,6 +48,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Utils.onActivityCreateThemeForMainActivity(this);
         setContentView(R.layout.activity_main);
 
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
+
         init();
         setBg(Utils.sTheme);
         addListener();
@@ -57,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         addEnglishCourses();
         addSportCourses();
+
     }
 
     private void setBg(String sTheme) {

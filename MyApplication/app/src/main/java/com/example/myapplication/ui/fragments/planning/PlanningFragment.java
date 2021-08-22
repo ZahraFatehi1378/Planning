@@ -35,9 +35,11 @@ import com.example.myapplication.recycler.OnStringClickListener;
 import com.example.myapplication.recycler.StringsListAdaptor;
 import com.example.myapplication.storage.shared_prefrences.Utils;
 import com.example.myapplication.ui.dialogs.TakePlanningDialog;
+import com.example.myapplication.ui.table.CustomCourseTableListener;
 import com.example.myapplication.ui.table.CustomTable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PlanningFragment extends Fragment {
     private ArrayList<String> facultiesList;
@@ -234,8 +236,31 @@ public class PlanningFragment extends Fragment {
             if (tempPlanning != null) {
                 TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning, course);
                 takePlanningDialog.setAddPlanningListener(planning -> {
-                    addPlan(planning, course);
-                    userTempPlanning.add(planning);
+
+                    int flag = 0 ;
+                    for (Planning planning1:tempPlanning){
+                        if (planning1.getId() != planning.getId()
+                                &&  checkTimes(planning , planning1)){
+                            Toast.makeText(getContext() , " تداخل زمانی ", Toast.LENGTH_SHORT).show();
+                            flag = 1;
+                        }
+                    }
+
+                    for (Planning planning1:tempPlanning){
+                        if (planning1.getId() != planning.getId()
+                                &&  checkExamTimes(planning , planning1)){
+                            Toast.makeText(getContext() , " تداخل امتحانی "+planning.getId(), Toast.LENGTH_SHORT).show();
+                            flag = 1;
+                        }
+                    }
+
+                    if (flag == 0) {
+                        addPlan(planning, course);
+                        userTempPlanning.add(planning);
+                        Toast.makeText(getContext() , "اضافه شد" , Toast.LENGTH_SHORT).show();
+                    }
+
+
                 });
             }
         });
@@ -300,16 +325,156 @@ public class PlanningFragment extends Fragment {
         } else {
             endHour = Integer.parseInt(planning.getEndTime());
         }
-        setAPlan(course.getName() + "\n" + planning.getInstructor(), startHour, startMin, endHour, endMin, planning.getDaysOfWeek());
+        setAPlan(planning.getId() ,course.getName() + "\n" + planning.getInstructor(), startHour, startMin, endHour, endMin, planning.getDaysOfWeek());
 
     }
 
-    private void setAPlan(String plan, int startHour, int startMin, int endHour, int endMin, ArrayList<String> days) {
+    private boolean checkTimes(Planning planning, Planning planning1){
+        int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
+        String[] s1 = planning1.getStartTime().split(":");
+        String[] e1 = planning1.getEndTime().split(":");
+        if (s1.length == 2) {
+            startHour1 = Integer.parseInt(s1[0]);
+            startMin1 = Integer.parseInt(s1[1]);
+        } else {
+            startHour1 = Integer.parseInt(planning1.getStartTime());
+        }
+        if (e1.length == 2) {
+            endHour1 = Integer.parseInt(e1[0]);
+            endMin1 = Integer.parseInt(e1[1]);
+        } else {
+            endHour1 = Integer.parseInt(planning1.getEndTime());
+        }
+
+        int startHour = 0, startMin = 0, endHour = 0, endMin = 0;
+        String[] s = planning.getStartTime().split(":");
+        if (s.length == 2) {
+            startHour = Integer.parseInt(s[0]);
+            startMin = Integer.parseInt(s[1]);
+        } else {
+            startHour = Integer.parseInt(planning.getStartTime());
+        }
+
+        int flag = 0;
+        for (String day :planning.getDaysOfWeek()){
+            for (String day1:planning1.getDaysOfWeek()){
+                if (day.contains("شنبه") && day1.contains("شنبه")){
+                    flag = 1;
+                }
+                else if (day.contains("یک") && day1.contains("یک")){
+                    flag = 1;
+                }
+                else if (day.contains("دو") && day1.contains("دو")){
+                    flag = 1;
+                }
+                else if (day.contains("سه") && day1.contains("سه")){
+                    flag = 1;
+                }
+                else if (day.contains("چهار") && day1.contains("چهار")){
+                    flag = 1;
+                }
+                else if (day.contains("پنج") && day1.contains("پنج")){
+                    flag = 1;
+                }
+
+            }
+        }
+
+
+        if (flag ==1 &&(startHour1*60+startMin1 )<(startHour*60+startMin) &&
+                (endHour1*60+endMin1)>(startHour*60+startMin) ){
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkExamTimes(Planning planning, Planning planning1){
+
+        int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
+        String[] s1 = planning1.getStartTimeExam().split(":");
+        String[] e1 = planning1.getEndTimeExam().split(":");
+        if (s1.length == 2) {
+            startHour1 = Integer.parseInt(s1[0]);
+            startMin1 = Integer.parseInt(s1[1]);
+        } else {
+            startHour1 = Integer.parseInt(planning1.getStartTimeExam());
+        }
+        if (e1.length == 2) {
+            endHour1 = Integer.parseInt(e1[0]);
+            endMin1 = Integer.parseInt(e1[1]);
+        } else {
+            endHour1 = Integer.parseInt(planning1.getEndTimeExam());
+        }
+
+        int startHour = 0, startMin = 0, endHour = 0, endMin = 0;
+        String[] s = planning.getStartTimeExam().split(":");
+        if (s.length == 2) {
+            startHour = Integer.parseInt(s[0]);
+            startMin = Integer.parseInt(s[1]);
+        } else {
+            startHour = Integer.parseInt(planning.getStartTimeExam());
+        }
+
+        if ((startHour1*60+startMin1 )<(startHour*60+startMin)
+                && (endHour1*60+endMin1)>(startHour*60+startMin)
+        && planning.getDayOfExam() == planning1.getDayOfExam()
+        && planning.getMonthOfExam() == planning1.getMonthOfExam()){
+            return false;
+        }
+        return true;
+    }
+
+    private void setAPlan(int id, String plan, int startHour, int startMin, int endHour, int endMin, ArrayList<String> days) {
         ArrayList<Integer> fromTop = getFarFromTop(days);
         int start = (startHour - 7) * 60 + startMin;
         int duration = (endHour - startHour) * 60 + endMin - startMin;
         for (Integer integer : fromTop)
-            customTable.addView(plan, (float) start / 60, integer, (float) duration / 60);
+            customTable.addView(id,plan, (float) start / 60, integer, (float) duration / 60, new CustomCourseTableListener() {
+                @Override
+                public void shewDeleteDialog(Integer id , TextView v) {
+                    AlertDialog dialog = new AlertDialog.Builder(getContext())
+                            .setMessage("مایل به حذف اطلاعات هستید؟")
+                            .setCancelable(true)
+                            .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog1, int which) {
+                                    Iterator<Planning> itr = userTempPlanning.iterator();
+
+                                    while(itr.hasNext()) {
+                                        Planning element = itr.next();
+                                        if (element.getId() ==id) {
+                                            userTempPlanning.remove(element);
+                                            Toast.makeText(getContext(), "حذف شد", Toast.LENGTH_SHORT).show();
+                                            customTable.removeView(v);
+
+                                            break;
+                                        }
+                                    }
+
+                                }
+                            })
+
+
+                            .setNegativeButton("خیر", null)
+                            .show();
+
+                    Typeface face=ResourcesCompat.getFont(getContext(),R.font.font);
+
+                    TextView textView = dialog.findViewById(android.R.id.message);
+                    textView.setTypeface(face);
+                    textView.setTextColor(Color.BLACK);
+
+
+                    Button button = dialog.getButton(Dialog.BUTTON_POSITIVE);
+                    button.setTypeface(face);
+                    button.setTextColor(Color.BLACK);
+
+                    Button button2 = dialog.getButton(Dialog.BUTTON_NEGATIVE);
+                    button2.setTypeface(face);
+                    button2.setTextColor(Color.BLACK);
+
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_row);
+                }
+            });
 
     }
 
