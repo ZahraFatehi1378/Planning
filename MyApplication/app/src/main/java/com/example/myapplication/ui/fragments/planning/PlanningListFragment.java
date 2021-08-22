@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.fragments.planning;
 
+;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -35,8 +37,8 @@ import com.example.myapplication.recycler.StringsListAdaptor;
 import com.example.myapplication.storage.shared_prefrences.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlanningListFragment extends Fragment {
@@ -44,6 +46,7 @@ public class PlanningListFragment extends Fragment {
     private ConstraintLayout mainLayout;
     private RecyclerView recyclerView;
     private FloatingActionButton floatingActionButton;
+    private  StringsListAdaptor stringsListAdaptor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,19 +77,60 @@ public class PlanningListFragment extends Fragment {
         List<MyPlanning> myPlannings = PlanningDataBase.getInstance(getContext()).planningDAO().getAllMyPlannings();
         if (myPlannings != null)
             for (MyPlanning planning : myPlannings) {
-                myPlanningsName.add(planning.getName()+planning.getId());
+                myPlanningsName.add(planning.getName() + planning.getId());
             }
-        StringsListAdaptor stringsListAdaptor = new StringsListAdaptor(myPlanningsName, new OnStringClickListener() {
+         stringsListAdaptor = new StringsListAdaptor(myPlanningsName, new OnStringClickListener() {
             @Override
             public void onItemClicked(String course) {
-
             }
 
             @Override
             public void onItemClickedPos(int pos) {
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("myPlanning",  myPlannings.get(pos).getPlannings());
+                bundle.putStringArrayList("myPlanning", myPlannings.get(pos).getPlannings());
                 Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_planningFragment, bundle);
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onItemLongClick(int pos) {
+
+                AlertDialog dialog = new AlertDialog.Builder(getContext())
+                        .setMessage("مایل به حذف هستید؟")
+                        .setCancelable(true)
+                        .setPositiveButton("بله", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog1, int which) {
+                                myPlanningsName.remove(pos);
+                                stringsListAdaptor.notifyDataSetChanged();
+
+                                PlanningDataBase.getInstance(getContext()).planningDAO().deleteMyPlanning(pos+1);
+                                Toast.makeText(getContext(),"حذف شد",Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+
+
+                        .setNegativeButton("خیر", null)
+                        .show();
+
+                Typeface face = ResourcesCompat.getFont(getContext(), R.font.font);
+
+                TextView textView = dialog.findViewById(android.R.id.message);
+                textView.setTypeface(face);
+                textView.setTextColor(Color.BLACK);
+
+
+                Button button = dialog.getButton(Dialog.BUTTON_POSITIVE);
+                button.setTypeface(face);
+                button.setTextColor(Color.BLACK);
+
+                Button button2 = dialog.getButton(Dialog.BUTTON_NEGATIVE);
+                button2.setTypeface(face);
+                button2.setTextColor(Color.BLACK);
+
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_row);
+
+
             }
 
 

@@ -19,6 +19,10 @@ public interface PlanningDAO {
     @Query("SELECT * FROM myplanning")
     List<MyPlanning> getAllMyPlannings();
 
+    @Query("delete from myplanning where id =:id")
+    void deleteMyPlanning(int id);
+
+
 }
 
 

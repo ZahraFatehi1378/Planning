@@ -238,7 +238,8 @@ public class PlanningFragment extends Fragment {
                 takePlanningDialog.setAddPlanningListener(planning -> {
 
                     int flag = 0 ;
-                    for (Planning planning1:tempPlanning){
+                    System.out.println(userTempPlanning.size());
+                    for (Planning planning1:userTempPlanning){
                         if (planning1.getId() != planning.getId()
                                 &&  checkTimes(planning , planning1)){
                             Toast.makeText(getContext() , " تداخل زمانی ", Toast.LENGTH_SHORT).show();
@@ -246,7 +247,7 @@ public class PlanningFragment extends Fragment {
                         }
                     }
 
-                    for (Planning planning1:tempPlanning){
+                    for (Planning planning1:userTempPlanning){
                         if (planning1.getId() != planning.getId()
                                 &&  checkExamTimes(planning , planning1)){
                             Toast.makeText(getContext() , " تداخل امتحانی "+planning.getId(), Toast.LENGTH_SHORT).show();
@@ -302,6 +303,11 @@ public class PlanningFragment extends Fragment {
 
             @Override
             public void onItemClickedPos(int pos) {
+
+            }
+
+            @Override
+            public void onItemLongClick(int pos) {
 
             }
         }));
@@ -415,13 +421,14 @@ public class PlanningFragment extends Fragment {
             startHour = Integer.parseInt(planning.getStartTimeExam());
         }
 
+        if (startHour == 0)return false;
         if ((startHour1*60+startMin1 )<(startHour*60+startMin)
                 && (endHour1*60+endMin1)>(startHour*60+startMin)
         && planning.getDayOfExam() == planning1.getDayOfExam()
         && planning.getMonthOfExam() == planning1.getMonthOfExam()){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void setAPlan(int id, String plan, int startHour, int startMin, int endHour, int endMin, ArrayList<String> days) {

@@ -127,6 +127,11 @@ public class CoursesListFragment extends Fragment {
             public void onItemClickedPos(int pos) {
 
             }
+
+            @Override
+            public void onItemLongClick(int pos) {
+
+            }
         }));
         facultiesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
 
