@@ -166,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.information: {
+
+
+                break;
             }
             case R.id.paxs: {
                 PaxesDialog paxesDialog = new PaxesDialog(this ,industrialCourses);
@@ -331,6 +334,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
         englishCourses.add(course1061042);
     }
+
 
     private void addIndustrialCourses() {
 
@@ -522,8 +526,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         industrialCourses.add(course2547510);
 
 
-
-        industrialCourses.add(course2519293);
         Course course2515733 = new Course(
                 2515733 ,
                 3,
@@ -705,6 +707,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void addGeneralCourses() {
+
 
         Course course2013731 = new Course(
                 2013731 ,
@@ -930,6 +933,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
         generalCourses.add(course2013741);
     }
+
 
     private void addPhysicCourses() {
         Course course1022391 = new Course(

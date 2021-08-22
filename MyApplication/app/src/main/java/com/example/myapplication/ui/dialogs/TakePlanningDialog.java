@@ -58,6 +58,7 @@ public class TakePlanningDialog  {
                         public void onClick(DialogInterface dialog1, int which) {
                             addPlanningListener.addPlanning(planning);
                             Toast.makeText(context, "افزوده شد", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         }
                     })
 

@@ -41,6 +41,7 @@ import com.example.myapplication.ui.table.CustomTable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+
 public class PlanningFragment extends Fragment {
     private ArrayList<String> facultiesList;
     private RecyclerView facultiesRecyclerView;
@@ -53,6 +54,7 @@ public class PlanningFragment extends Fragment {
     private Bundle bundle;
     private ArrayList<Planning> bundleArray;
     private View view;
+    int id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,6 +97,7 @@ public class PlanningFragment extends Fragment {
         bundle = getArguments();
         if (bundle != null) {
             bundleArray = new ArrayList();
+            id = bundle.getInt("planningId");
             for (String s : bundle.getStringArrayList("myPlanning")) {
                 Planning x = findPlanning(Integer.parseInt(s));
                 userTempPlanning.add(x);
@@ -188,7 +191,17 @@ public class PlanningFragment extends Fragment {
         //add courses
         CoursesListAdaptor ca = new CoursesListAdaptor(tempCourses, course -> {
             tempPlanning.clear();
-            switch (course.getGroup()) {
+            System.out.println("++++++++++"+course.getGroup()+"+++++++++++");
+            if (course.getGroup().contains("زبان")) {
+
+                for (Planning planning : ((PlaningActivity) requireActivity()).englishPlannings) {
+                    if (planning.getCourseId() == course.getId()) {
+                        tempPlanning.add(planning);
+                    }
+                }
+            }
+            switch (course.getGroup().trim()) {
+
                 case "عمومی":
                     for (Planning planning : ((PlaningActivity) requireActivity()).generalPlannings) {
                         if (planning.getCourseId() == course.getId()) {
@@ -217,13 +230,7 @@ public class PlanningFragment extends Fragment {
                         }
                     }
                     break;
-                case "زبان":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).englishPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
+
                 case "تربیت بدنی":
                     for (Planning planning : ((PlaningActivity) requireActivity()).SportPlannings) {
                         if (planning.getCourseId() == course.getId()) {
@@ -231,6 +238,9 @@ public class PlanningFragment extends Fragment {
                         }
                     }
                     break;
+
+
+
             }
 
             if (tempPlanning != null) {
@@ -255,6 +265,8 @@ public class PlanningFragment extends Fragment {
                         }
                     }
 
+
+                    System.out.println(planning.getInstructor()+"PPPPPPPPPPPP");
                     if (flag == 0) {
                         addPlan(planning, course);
                         userTempPlanning.add(planning);
@@ -335,6 +347,7 @@ public class PlanningFragment extends Fragment {
 
     }
 
+    //اگه تداخل داشت true
     private boolean checkTimes(Planning planning, Planning planning1){
         int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
         String[] s1 = planning1.getStartTime().split(":");
@@ -352,7 +365,7 @@ public class PlanningFragment extends Fragment {
             endHour1 = Integer.parseInt(planning1.getEndTime());
         }
 
-        int startHour = 0, startMin = 0, endHour = 0, endMin = 0;
+        int startHour = 0, startMin = 0;
         String[] s = planning.getStartTime().split(":");
         if (s.length == 2) {
             startHour = Integer.parseInt(s[0]);
@@ -364,7 +377,7 @@ public class PlanningFragment extends Fragment {
         int flag = 0;
         for (String day :planning.getDaysOfWeek()){
             for (String day1:planning1.getDaysOfWeek()){
-                if (day.contains("شنبه") && day1.contains("شنبه")){
+                if (day.equals("شنبه") && day1.equals("شنبه")){
                     flag = 1;
                 }
                 else if (day.contains("یک") && day1.contains("یک")){
@@ -387,11 +400,13 @@ public class PlanningFragment extends Fragment {
         }
 
 
+
+
         if (flag ==1 &&(startHour1*60+startMin1 )<(startHour*60+startMin) &&
                 (endHour1*60+endMin1)>(startHour*60+startMin) ){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean checkExamTimes(Planning planning, Planning planning1){
@@ -435,10 +450,12 @@ public class PlanningFragment extends Fragment {
         ArrayList<Integer> fromTop = getFarFromTop(days);
         int start = (startHour - 7) * 60 + startMin;
         int duration = (endHour - startHour) * 60 + endMin - startMin;
-        for (Integer integer : fromTop)
-            customTable.addView(id,plan, (float) start / 60, integer, (float) duration / 60, new CustomCourseTableListener() {
+
+        for (Integer integer : fromTop) {
+
+            customTable.addView(id, plan, (float) start / 60, integer, (float) duration / 60, new CustomCourseTableListener() {
                 @Override
-                public void shewDeleteDialog(Integer id , TextView v) {
+                public void shewDeleteDialog(Integer id, TextView v) {
                     AlertDialog dialog = new AlertDialog.Builder(getContext())
                             .setMessage("مایل به حذف اطلاعات هستید؟")
                             .setCancelable(true)
@@ -446,16 +463,17 @@ public class PlanningFragment extends Fragment {
                                 public void onClick(DialogInterface dialog1, int which) {
                                     Iterator<Planning> itr = userTempPlanning.iterator();
 
-                                    while(itr.hasNext()) {
+                                    while (itr.hasNext()) {
                                         Planning element = itr.next();
-                                        if (element.getId() ==id) {
+                                        if (element.getId() == id) {
                                             userTempPlanning.remove(element);
                                             Toast.makeText(getContext(), "حذف شد", Toast.LENGTH_SHORT).show();
-                                            customTable.removeView(v);
+
 
                                             break;
                                         }
                                     }
+                                    customTable.removeView(v);
 
                                 }
                             })
@@ -464,7 +482,7 @@ public class PlanningFragment extends Fragment {
                             .setNegativeButton("خیر", null)
                             .show();
 
-                    Typeface face=ResourcesCompat.getFont(getContext(),R.font.font);
+                    Typeface face = ResourcesCompat.getFont(getContext(), R.font.font);
 
                     TextView textView = dialog.findViewById(android.R.id.message);
                     textView.setTypeface(face);
@@ -482,7 +500,7 @@ public class PlanningFragment extends Fragment {
                     dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_row);
                 }
             });
-
+        }
     }
 
     private ArrayList<Integer> getFarFromTop(ArrayList<String> days) {
@@ -535,8 +553,12 @@ public class PlanningFragment extends Fragment {
                                 .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog1, int which) {
 
-                                        PlanningDataBase.getInstance(getContext()).planningDAO().insertMyPlanning(new MyPlanning(0, "برنامه", x));
+                                        if (bundleArray != null){
+                                            PlanningDataBase.getInstance(getContext()).planningDAO().updatePlanning(x ,id );
 
+                                        }else {
+                                            PlanningDataBase.getInstance(getContext()).planningDAO().insertMyPlanning(new MyPlanning(0, "برنامه", x));
+                                        }
                                         Toast.makeText(getContext(), "افزوده شد", Toast.LENGTH_SHORT).show();
                                         {
                                             Navigation.findNavController(view).popBackStack();
@@ -582,19 +604,24 @@ public class PlanningFragment extends Fragment {
 
         //is equal to first bundle
         private boolean checkBundleArray() {
+
             if (bundleArray != null) {
-                for (Planning planning1 : userTempPlanning) {
-                    for (Planning planning2 : bundleArray) {
-                        if (planning1.getId() != planning2.getId()) {
-                            return false;
-                        }
-                    }
-                }
+//                for (Planning planning1 : userTempPlanning) {
+//                    for (Planning planning2 : bundleArray) {
+//                        System.out.println(planning1.getId() +"                          "+planning2.getId());
+//                        if (planning1.getId() != planning2.getId()) {
+//                            return false;
+//                        }
+//                    }
+//                }
+                if (userTempPlanning.equals(bundleArray))
                 return true;
 
             } else {
                 return false;
             }
+
+            return false;
         }
     };
 }

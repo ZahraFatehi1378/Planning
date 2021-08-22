@@ -73,6 +73,8 @@ public class CustomTable extends FrameLayout {
     public void addView(Integer planningId ,String text ,float right2, float top2 , float width2 , CustomCourseTableListener customCourseTableListener){
         TextView v = new TextView(getContext());
         addView(v, initLayoutParams((int) (right2* width + width), (int) (top2*height+marginTop), (int) (width2*width),height));
+        System.out.println("000000000000000000000000000000000000000");
+        System.out.println(text);
         v.setText(text);
         v.setTextColor(Color.BLACK);
         v.setGravity(Gravity.CENTER);

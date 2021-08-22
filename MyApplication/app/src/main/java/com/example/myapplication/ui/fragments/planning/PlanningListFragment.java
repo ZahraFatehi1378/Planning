@@ -88,6 +88,7 @@ public class PlanningListFragment extends Fragment {
             public void onItemClickedPos(int pos) {
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("myPlanning", myPlannings.get(pos).getPlannings());
+                bundle.putInt("planningId" ,myPlannings.get(pos).getId() );
                 Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_planningFragment, bundle);
             }
 
