@@ -17,6 +17,7 @@ import com.example.myapplication.model.Course;
 import com.example.myapplication.model.Planning;
 import com.example.myapplication.storage.shared_prefrences.SharedPreferencesClass;
 import com.example.myapplication.storage.shared_prefrences.Utils;
+import com.example.myapplication.ui.dialogs.InfoDialog;
 import com.example.myapplication.ui.dialogs.PaxesDialog;
 import com.google.android.material.navigation.NavigationView;
 
@@ -166,8 +167,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.information: {
-
-
+                InfoDialog infoDialog = new InfoDialog(this);
                 break;
             }
             case R.id.paxs: {
@@ -442,6 +442,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         );
         industrialCourses.add(course2515723);
 
+        Course course2515713 = new Course(
+                2515713 ,
+                3,
+                " طراحی ایجاد صنایع" ,
+                "صنعتی",
+                "" ,
+                new ArrayList<Integer>()
+                {{add(2515023);add(2515483);add(2500123);}}
+        );
+        industrialCourses.add(course2515713);
 
         Course course2516153 = new Course(
                 2516153 ,
@@ -477,6 +487,99 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 {{add(1011353);add(2515273);}}
         );
         industrialCourses.add(course2519293);
+
+        Course course2515543 = new Course(
+                2515543 ,
+                3,
+                " کنترل کیفیت آماری" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2515273);}}
+        );
+        industrialCourses.add(course2515543);
+
+        Course course2526103 = new Course(
+                2526103 ,
+                3,
+                " تحلیل سیستم ها" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(1011253);}}
+        );
+        industrialCourses.add(course2526103);
+
+        Course course2010712 = new Course(
+                2010712 ,
+                2,
+                " نقشه کشی صنعتی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(0);}}
+        );
+        industrialCourses.add(course2010712);
+
+        Course course2505833 = new Course(
+                2505833 ,
+                3,
+                " استاتیک و مقاومت مصالح" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(1011053);add(1021303);}}
+        );
+        industrialCourses.add(course2505833);
+
+
+        Course course2513303 = new Course(
+                2513303 ,
+                3,
+                " روشهای تولید" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2515153);}}
+        );
+        industrialCourses.add(course2513303);
+
+        Course course2013721 = new Course(
+                2013721 ,
+                1,
+                " کارگاه ماشین ابزار 1" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(0);}}
+        );
+        industrialCourses.add(course2013721);
+
+        Course course2013731 = new Course(
+                2013731 ,
+                1,
+                " کارگاه ریخته گری،ذوب و مدلسازی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(0);}}
+        );
+        industrialCourses.add(course2013731);
+
+        Course course2533111 = new Course(
+                2533111 ,
+                1,
+                " کارآموزی" ,
+                "دانشکده صنایع",
+                "اصلی",
+                new ArrayList<Integer>()
+                {{add(2581152);add(70);}}
+        );
+        industrialCourses.add(course2533111);
+
+
+
+
 
         Course course2524153 = new Course(
                 2524153 ,

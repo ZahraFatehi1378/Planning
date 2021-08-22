@@ -4371,6 +4371,95 @@ public class PlaningActivity extends AppCompatActivity {
         10 ,"هردو"
         );
 
+        Planning planning25152731 = new Planning(
+                25152731,
+                2515273 ,
+                "گماسائی",
+                new ArrayList<String>(){{add("یک شنبه");add("سه شنبه");}},
+                "15",
+                "16:30",
+                "15" ,
+                "17" ,
+                26 ,
+                10 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25152731);
+
+        Planning planning25157331 = new Planning(
+                25157331,
+                2515733 ,
+                "حاجی زاده",
+                new ArrayList<String>(){{add(" شنبه");add("دو شنبه");}},
+                "13:30",
+                "15",
+                "9" ,
+                "11" ,
+                28 ,
+                10 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25157331);
+        Planning planning25154231 = new Planning(
+                25154231,
+                2515423 ,
+                "کریمی",
+                new ArrayList<String>(){{add(" سه شنبه");add("یک شنبه");}},
+                "9:15",
+                "10:45",
+                "15" ,
+                "17" ,
+                18 ,
+                10 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25154231);
+
+        Planning planning25154201 = new Planning(
+                25154201,
+                2515420 ,
+                "  تدریسیار (کریمی)",
+                new ArrayList<String>(){{add(" چهار شنبه");}},
+                "15",
+                "16:30",
+                "0" ,
+                "0" ,
+                0 ,
+                0 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25154201);
+
+        Planning planning25331531 = new Planning(
+                25331531,
+                2533153 ,
+                "حاجی زاده",
+                new ArrayList<String>(){{add(" شنبه");add("دو شنبه");}},
+                "9:15",
+                "10:45",
+                "13" ,
+                "15" ,
+                25 ,
+                10 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25331531);
+
+        Planning planning25150631 = new Planning(
+                25150631,
+                2515063 ,
+                "هراتی نیک",
+                new ArrayList<String>(){{add(" سه شنبه");add("یک شنبه");}},
+                "10:45",
+                "12:15",
+                "9" ,
+                "11" ,
+                29 ,
+                10 ,"هردو"
+        );
+
+        industrialPlannings.add(planning25150631);
+
         industrialPlannings.add(planning25150232);
 
 

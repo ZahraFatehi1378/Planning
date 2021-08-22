@@ -400,6 +400,8 @@ public class PlanningFragment extends Fragment {
         }
 
 
+        if (flag ==1 && startHour1 == startHour && startMin== startMin1)
+            return true;
 
 
         if (flag ==1 &&(startHour1*60+startMin1 )<(startHour*60+startMin) &&
