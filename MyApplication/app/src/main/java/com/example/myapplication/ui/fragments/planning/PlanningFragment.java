@@ -33,7 +33,6 @@ import com.example.myapplication.model.Planning;
 import com.example.myapplication.recycler.CoursesListAdaptor;
 import com.example.myapplication.recycler.OnStringClickListener;
 import com.example.myapplication.recycler.StringsListAdaptor;
-import com.example.myapplication.storage.shared_prefrences.Utils;
 import com.example.myapplication.ui.dialogs.TakePlanningDialog;
 import com.example.myapplication.ui.table.CustomCourseTableListener;
 import com.example.myapplication.ui.table.CustomTable;
@@ -43,7 +42,7 @@ import java.util.Iterator;
 
 
 public class PlanningFragment extends Fragment {
-    private ArrayList<String> facultiesList;
+    private ArrayList<String> mainCoursesList;
     private RecyclerView facultiesRecyclerView;
     private ArrayList<Course> tempCourses;
     private RecyclerView coursesRecycler;
@@ -59,15 +58,15 @@ public class PlanningFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        facultiesList = new ArrayList<>();
+        mainCoursesList = new ArrayList<>();
         tempCourses = new ArrayList<>();
         tempPlanning = new ArrayList<>();
-        facultiesList.add("عمومی");
-        facultiesList.add("دانشکده صنایع");
-        facultiesList.add("ریاضی");
-        facultiesList.add("فیزیک");
-        facultiesList.add("زبان");
-        facultiesList.add("تربیت بدنی");
+        mainCoursesList.add("عمومی");
+        mainCoursesList.add("دانشکده");
+        mainCoursesList.add("ریاضی");
+        mainCoursesList.add("فیزیک");
+        mainCoursesList.add("زبان");
+        mainCoursesList.add("تربیت بدنی");
         return inflater.inflate(R.layout.fragment_planning, container, false);
 
     }
@@ -76,7 +75,7 @@ public class PlanningFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainLayout = view.findViewById(R.id.mainLayout3);
-        setBg(Utils.sTheme);
+      //  setBg(Utils.sTheme);
         this.view = view;
         init(view);
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
@@ -85,7 +84,7 @@ public class PlanningFragment extends Fragment {
 
     private void init(View view) {
         customTable = view.findViewById(R.id.customTable);
-        customTable.setTheme(Utils.sTheme);
+     //   customTable.setTheme(Utils.sTheme);
         userTempPlanning = new ArrayList<>();
 
         checkBundle();
@@ -281,7 +280,7 @@ public class PlanningFragment extends Fragment {
 
         //add faculties
         facultiesRecyclerView = view.findViewById(R.id.faculties_recycler2);
-        facultiesRecyclerView.setAdapter(new StringsListAdaptor(facultiesList, new OnStringClickListener() {
+        facultiesRecyclerView.setAdapter(new StringsListAdaptor(mainCoursesList, new OnStringClickListener() {
             @Override
             public void onItemClicked(String string) {
                 tempCourses.clear();

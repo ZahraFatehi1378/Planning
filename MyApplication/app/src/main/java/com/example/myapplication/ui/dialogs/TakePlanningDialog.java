@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,14 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.model.Course;
 import com.example.myapplication.model.Planning;
-import com.example.myapplication.recycler.OnALlPlanningsItemClickListener;
-import com.example.myapplication.recycler.PlanningsListAdaptor;
+import com.example.myapplication.recycler.PlanningsDetailListAdaptor;
 
 import java.util.ArrayList;
 
 public class TakePlanningDialog  {
 
-    private PlanningsListAdaptor planningsAdaptor;
+    private PlanningsDetailListAdaptor planningsAdaptor;
     private AddPlanningListener addPlanningListener;
 
     public void setAddPlanningListener(AddPlanningListener addPlanningListener) {
@@ -42,7 +40,7 @@ public class TakePlanningDialog  {
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.take_planning_dialog);
         RecyclerView recyclerView = dialog.findViewById(R.id.planningRecyclerView2);
-        planningsAdaptor = new PlanningsListAdaptor(plannings , course);
+        planningsAdaptor = new PlanningsDetailListAdaptor(plannings , course);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(planningsAdaptor);
 

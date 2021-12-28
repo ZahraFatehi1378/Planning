@@ -6,7 +6,7 @@
     <solid android:color="?colorOnPrimary"/>
     <stroke
         android:width="10dp"
-        android:color="#16A0B9FC"/>
+        android:color="#7B8CA6"/>
     <corners android:radius="20dp"/>
 
     <size

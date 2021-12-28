@@ -14,13 +14,13 @@ import com.example.myapplication.model.Planning;
 
 import java.util.ArrayList;
 
-public class PlanningsListAdaptor extends RecyclerView.Adapter<PlanningsListAdaptor.MyHolder> {
+public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDetailListAdaptor.MyHolder> {
 
     private ArrayList<Planning> plannings;
     private OnALlPlanningsItemClickListener onItemClickListener;
     private Course course;
 
-    public PlanningsListAdaptor(ArrayList<Planning> plannings , Course course) {
+    public PlanningsDetailListAdaptor(ArrayList<Planning> plannings , Course course) {
         this.plannings = plannings;
         this.course = course;
     }
@@ -32,7 +32,7 @@ public class PlanningsListAdaptor extends RecyclerView.Adapter<PlanningsListAdap
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.planning_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dialog_planning_item, parent, false);
         return new MyHolder(view);
     }
 

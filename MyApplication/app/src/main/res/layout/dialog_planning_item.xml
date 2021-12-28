@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_row_simple"
+    android:layout_margin="5dp"
+    android:layout_height="90dp">
+
+    <TextView
+        android:id="@+id/number2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/font"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/planning_course_name"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/font"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="نام درس"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="استاد"
+        android:textColor="@color/black"
+        android:fontFamily="@font/font"
+        android:textSize="16dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/day_of_week"
+        app:layout_constraintEnd_toEndOf="@+id/number2"
+        app:layout_constraintTop_toBottomOf="@+id/planning_course_name" />
+
+    <TextView
+        android:id="@+id/exam_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/font"
+
+        app:layout_constraintBottom_toTopOf="@+id/gender"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15dp"
+        android:text="امتحان"/>
+
+    <TextView
+        android:id="@+id/day_of_week"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/font"
+
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp"
+        android:text="روز هفته"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/class_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/font"
+
+        android:layout_marginBottom="8dp"
+        android:text="ساعت کلاس"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/day_of_week" />
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/font"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="13dp"
+        android:textColor="@color/black"
+        android:text="جنسیت"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

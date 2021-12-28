@@ -8,10 +8,8 @@
         android:label=":)"
         android:roundIcon="@drawable/ico"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".AllCoursesActivity"
-            android:exported="true" />
+        android:theme="@style/AppThemeNoActionBar.NoActionBar"
+        >
         <activity
             android:name=".PlaningActivity"
             android:exported="true" />

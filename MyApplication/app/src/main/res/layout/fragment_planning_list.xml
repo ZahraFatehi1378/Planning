@@ -1,27 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.planning.PlanningListFragment"
-    android:id="@+id/mainLayout2">
+    android:orientation="vertical"
+    tools:context=".ui.fragments.planning.PlanningListFragment">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:layout_width="48.dp"
+            android:layout_height="48.dp"
+            android:src="@drawable/ic_info_circle"
+            app:tint="#000D24"
+            />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:text="انتخاب واحد"
+            android:textSize="36dp"
+            android:textColor="#000D24"/>
+
+        <ImageView
+            android:layout_width="38.dp"
+            android:layout_height="38.dp"
+            android:src="@drawable/ic_profile"
+            app:tint="#707A86"
+            android:padding="5dp"
+            android:background="@drawable/bg_simple_round"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_marginVertical="18dp"
+        >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainCoursesRecyclerView"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add_planning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_simple_corner"
+        android:layout_marginHorizontal="15dp"
+        android:paddingHorizontal="8dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="right"
+        >
+
+        <ImageView
+            android:layout_width="22.dp"
+            android:layout_height="22.dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/white"
+            android:padding="5.dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="افزودن برنامه"
+            android:textSize="20dp"
+            android:fontFamily="@font/font"
+            android:layout_margin="8sp"
+
+            />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/planningRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:src="@android:drawable/ic_input_add"
-        android:tint="@color/black"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/addBtn"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
