@@ -40,27 +40,20 @@ public class StringsListAdaptor extends RecyclerView.Adapter<StringsListAdaptor.
     }
 
 
-    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener , View.OnLongClickListener {
+    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
         TextView stringTV;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             stringTV = itemView.findViewById(R.id.faculty_name);
             itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             if (onItemClickListener != null ) {
-                onItemClickListener.onItemClicked(strings.get(getAdapterPosition()));
                 onItemClickListener.onItemClickedPos(getAdapterPosition());
             }
         }
 
-        @Override
-        public boolean onLongClick(View v) {
-            onItemClickListener.onItemLongClick(getAdapterPosition());
-            return false;
-        }
     }
 }

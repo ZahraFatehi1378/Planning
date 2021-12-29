@@ -63,8 +63,7 @@
         android:background="@drawable/bg_simple_corner"
         android:fontFamily="@font/font"
         android:text="ذخیره برنامه ریزی"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="21dp" />
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

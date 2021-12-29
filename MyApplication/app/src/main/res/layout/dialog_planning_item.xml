@@ -40,7 +40,7 @@
         android:text="استاد"
         android:textColor="@color/black"
         android:fontFamily="@font/font"
-        android:textSize="16dp"
+        android:textSize="14dp"
 
         app:layout_constraintBottom_toTopOf="@+id/day_of_week"
         app:layout_constraintEnd_toEndOf="@+id/number2"
@@ -100,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="13dp"
         android:textColor="@color/black"
-        android:text="جنسیت"/>
+        android:text=""/>
 
 
 

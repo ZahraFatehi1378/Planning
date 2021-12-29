@@ -1,11 +1,14 @@
 package com.example.myapplication.recycler;
 
+import android.app.ListActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -51,8 +54,9 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
 
 
 
-    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView planningCourseNameTV , instructor ,gender , daysOfWeek , examDate ,class_time ;
+    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView planningCourseNameTV, instructor, gender, daysOfWeek, examDate, class_time;
+
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             planningCourseNameTV = itemView.findViewById(R.id.planning_course_name);
@@ -60,8 +64,7 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
             gender = itemView.findViewById(R.id.gender);
             daysOfWeek = itemView.findViewById(R.id.day_of_week);
             examDate = itemView.findViewById(R.id.exam_date);
-            class_time= itemView.findViewById(R.id.class_time);
-
+            class_time = itemView.findViewById(R.id.class_time);
 
 
             itemView.setOnClickListener(this);
@@ -69,9 +72,11 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
 
         @Override
         public void onClick(View v) {
-            if (onItemClickListener != null ) {
+            if (onItemClickListener != null) {
                 onItemClickListener.onItemClicked(plannings.get(getAdapterPosition()));
             }
         }
+
+
     }
 }

@@ -28,24 +28,28 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="48.dp"
-                android:layout_height="48.dp"
-                android:src="@drawable/ic_info_circle"
-                app:tint="#000D24" />
+                android:id="@+id/back"
+                android:layout_width="38.dp"
+                android:layout_height="38.dp"
+                android:background="@drawable/bg_simple_round_dark"
+                android:padding="5dp"
+                android:src="@drawable/ic_chevron_big_left"
+                app:tint="#707A86" />
 
             <TextView
                 android:id="@+id/category_name"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="3"
-                android:fontFamily="@font/font"
+                android:fontFamily="@font/font2"
                 android:gravity="center"
                 android:text="درس"
                 android:textColor="#000D24"
                 android:textSize="36dp" />
 
             <ImageView
+                android:id="@+id/list"
                 android:layout_width="38.dp"
                 android:layout_height="38.dp"
                 android:background="@drawable/bg_simple_round_dark"
@@ -72,8 +76,8 @@
                 android:fontFamily="@font/font"
                 android:gravity="center"
                 android:hint=" نام استاد"
-                android:padding="5dp"
-                android:textSize="24sp"
+                android:padding="10dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <EditText
@@ -86,9 +90,9 @@
                 android:fontFamily="@font/font"
                 android:gravity="center"
                 android:hint="نام درس"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:textColor="?android:textColorPrimary"
-                android:textSize="24sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_category_name" />
 
@@ -109,9 +113,9 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="ساعت پایان کلاس"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_id" />
 
@@ -124,16 +128,16 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="ساعت شروع کلاس"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
         </LinearLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/day_of_week"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,9 +146,9 @@
             android:background="@drawable/border"
             android:fontFamily="@font/font"
             android:gravity="center"
-            android:padding="5dp"
-            android:hint="روز های برگزاری کلاس"
-            android:textSize="24dp"
+            android:padding="10dp"
+            android:text="روز های برگزاری کلاس"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
@@ -163,9 +167,9 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="ساعت پایان امتحان"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_id" />
 
@@ -178,9 +182,9 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:text="ساعت شروع امتحان"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -203,9 +207,9 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:hint="ماه امتحان"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_id" />
 
@@ -218,9 +222,9 @@
                 android:background="@drawable/border"
                 android:fontFamily="@font/font"
                 android:gravity="center"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:hint="روز امتحان"
-                android:textSize="24dp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -234,11 +238,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="21dp"
         android:background="@drawable/bg_simple_corner"
-        android:text="وارد کردن اطلاعات درس"
+        android:text="ثبت اطلاعات درس"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="21dp"
         android:layout_marginBottom="36dp"
         android:fontFamily="@font/font"
-        android:textSize="24dp"/>
+        android:textSize="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

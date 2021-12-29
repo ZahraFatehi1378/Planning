@@ -48,6 +48,7 @@ public class PlanningFragment extends Fragment {
     private ArrayList<Course> bundleArray;
     private View view;
     int id;
+    private Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,10 +68,14 @@ public class PlanningFragment extends Fragment {
 
     private void init(View view) {
         customTable = view.findViewById(R.id.customTable);
+        button = view.findViewById(R.id.button);
         userTempPlanning = new ArrayList<>();
 
         checkBundle();
         addRecycler(view);
+        button.setOnClickListener(v -> {
+            callback.handleOnBackPressed();
+        });
 
     }
 
@@ -98,15 +103,12 @@ public class PlanningFragment extends Fragment {
         //add faculties
         coursesCategoryRecyclerView = view.findViewById(R.id.categories_recycler);
         coursesCategoryRecyclerView.setAdapter(new StringsListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames, new OnStringClickListener() {
-            @Override
-            public void onItemClicked(String string) {
-            }
 
             @Override
             public void onItemClickedPos(int pos) {
                 List<Course> tempPlanning = PlanningDataBase.getInstance(getContext()).CourseDAO().getCourseByCategory(pos);
                 if (tempPlanning != null) {
-                    TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning);
+                    TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning , true);
                     takePlanningDialog.setAddPlanningListener(planning -> {
 
                         int flag = 0;
@@ -140,10 +142,6 @@ public class PlanningFragment extends Fragment {
 
             }
 
-            @Override
-            public void onItemLongClick(int pos) {
-
-            }
         }));
         coursesCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
     }

@@ -1,34 +1,39 @@
 package com.example.myapplication.ui.fragments.planning;
 
-;
-import android.content.Intent;
-import android.media.Image;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.PlaningActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.db.PlanningDataBase;
 import com.example.myapplication.model.MyPlanning;
 import com.example.myapplication.recycler.MainCoursesListAdaptor;
 import com.example.myapplication.recycler.PlaningListAdaptor;
-import com.example.myapplication.recycler.StringsListAdaptor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+;
 
 public class PlanningListFragment extends Fragment {
 
@@ -101,6 +106,58 @@ public class PlanningListFragment extends Fragment {
 
         planingRecyclerView.setAdapter(planingListAdaptor);
         planingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN | ItemTouchHelper.UP) {
+
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
+                //Remove swiped item from list and notify the RecyclerView
+
+                AlertDialog x = new AlertDialog.Builder(getContext())
+                        .setMessage("آیا مایل به حذف برنامه هستید؟")
+                        .setCancelable(true)
+                        .setPositiveButton("بله", (dialog1, which) -> {
+                            int position = viewHolder.getAdapterPosition();
+                            myPlanningsName.remove(position);
+                            planingListAdaptor.notifyDataSetChanged();
+                            PlanningDataBase.getInstance(getContext()).planningDAO().deleteMyPlanning(myPlannings.get(position).getId());
+                            Toast.makeText(getContext(), "انجام شد", Toast.LENGTH_SHORT).show();
+
+                        })
+
+
+                        .setNegativeButton("خیر", (dialog, which) -> {
+                            planingListAdaptor.notifyDataSetChanged();
+                        })
+
+                        .show();
+
+                Typeface face = ResourcesCompat.getFont(getContext(), R.font.font);
+
+                TextView textView = (TextView) x.findViewById(android.R.id.message);
+                textView.setTypeface(face);
+                textView.setTextColor(Color.BLACK);
+
+
+                Button button = x.getButton(Dialog.BUTTON_POSITIVE);
+                button.setTypeface(face);
+                button.setTextColor(Color.BLACK);
+
+                Button button2 = x.getButton(Dialog.BUTTON_NEGATIVE);
+                button2.setTypeface(face);
+                button2.setTextColor(Color.BLACK);
+
+                x.getWindow().setBackgroundDrawableResource(R.drawable.bg_row);
+
+            }
+        };
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
+        itemTouchHelper.attachToRecyclerView(planingRecyclerView);
     }
 
 

@@ -74,8 +74,6 @@ public class CustomTable extends FrameLayout {
     public void addView(Integer planningId ,String text ,float right2, float top2 , float width2 , CustomCourseTableListener customCourseTableListener){
         TextView v = new TextView(getContext());
         addView(v, initLayoutParams((int) (right2* width + width), (int) (top2*height+marginTop), (int) (width2*width),height));
-        System.out.println("000000000000000000000000000000000000000");
-        System.out.println(text);
         v.setText(text);
         v.setTextColor(Color.BLACK);
         v.setGravity(Gravity.CENTER);
@@ -92,13 +90,14 @@ public class CustomTable extends FrameLayout {
     }
 
     private void addBaseViews() {
+        int txtSize =14;
         TextView v = new TextView(getContext());
         addView(v, initLayoutParams(0,marginTop, width,height));
         v.setText("شنبه");
         v.setTextColor(color);
         v.setGravity(Gravity.CENTER);
         v.setTypeface(face);
-        v.setTextSize(20);
+        v.setTextSize(txtSize);
 
         TextView v1 = new TextView(getContext());
         addView(v1, initLayoutParams(0,height+marginTop, width,height));
@@ -106,7 +105,7 @@ public class CustomTable extends FrameLayout {
         v1.setTextColor(color);
         v1.setGravity(Gravity.CENTER);
         v1.setTypeface(face);
-        v1.setTextSize(20);
+        v1.setTextSize(txtSize);
 
         TextView v2 = new TextView(getContext());
         addView(v2, initLayoutParams(0,2*height+marginTop, width,height));
@@ -114,7 +113,7 @@ public class CustomTable extends FrameLayout {
         v2.setTextColor(color);
         v2.setGravity(Gravity.CENTER);
         v2.setTypeface(face);
-        v2.setTextSize(20);
+        v2.setTextSize(txtSize);
 
         TextView v3 = new TextView(getContext());
         addView(v3, initLayoutParams(0,3*height+marginTop, width,height));
@@ -122,7 +121,7 @@ public class CustomTable extends FrameLayout {
         v3.setTextColor(color);
         v3.setGravity(Gravity.CENTER);
         v3.setTypeface(face);
-        v3.setTextSize(20);
+        v3.setTextSize(txtSize);
 
         TextView v4 = new TextView(getContext());
         addView(v4, initLayoutParams(0,4*height+marginTop, width,height));
@@ -130,7 +129,7 @@ public class CustomTable extends FrameLayout {
         v4.setTextColor(color);
         v4.setGravity(Gravity.CENTER);
         v4.setTypeface(face);
-        v4.setTextSize(20);
+        v4.setTextSize(txtSize);
 
         TextView v5 = new TextView(getContext());
         addView(v5, initLayoutParams(0,5*height+marginTop, width,height));
@@ -138,7 +137,7 @@ public class CustomTable extends FrameLayout {
         v5.setTextColor(color);
         v5.setGravity(Gravity.CENTER);
         v5.setTypeface(face);
-        v5.setTextSize(20);
+        v5.setTextSize(txtSize);
 
 
         TextView v6 = new TextView(getContext());
@@ -146,7 +145,7 @@ public class CustomTable extends FrameLayout {
         v6.setText("");
         v6.setTextColor(Color.WHITE);
         v6.setTypeface(face);
-        v6.setTextSize(20);
+        v6.setTextSize(txtSize);
 
         TextView v7 = new TextView(getContext());
         addView(v7, initLayoutParams(width,0, width,marginTop));
@@ -154,7 +153,7 @@ public class CustomTable extends FrameLayout {
         v7.setTextColor(Color.WHITE);
         v7.setBackgroundResource(R.drawable.bg_simple_bright);
         v7.setTypeface(face);
-        v7.setTextSize(20);
+        v7.setTextSize(txtSize);
 
         TextView v8 = new TextView(getContext());
         addView(v8, initLayoutParams(2* width,0, width,marginTop));
@@ -162,7 +161,7 @@ public class CustomTable extends FrameLayout {
         v8.setTextColor(Color.WHITE);
         v8.setBackgroundResource(R.drawable.bg_simple_bright);
         v8.setTypeface(face);
-        v8.setTextSize(20);
+        v8.setTextSize(txtSize);
 
 
         TextView v9 = new TextView(getContext());
@@ -171,7 +170,7 @@ public class CustomTable extends FrameLayout {
         v9.setTextColor(Color.WHITE);
         v9.setBackgroundResource(R.drawable.bg_simple_bright);
         v9.setTypeface(face);
-        v9.setTextSize(20);
+        v9.setTextSize(txtSize);
 
 
         TextView v10 = new TextView(getContext());
@@ -180,7 +179,7 @@ public class CustomTable extends FrameLayout {
         v10.setTextColor(Color.WHITE);
         v10.setBackgroundResource(R.drawable.bg_simple_bright);
         v10.setTypeface(face);
-        v10.setTextSize(20);
+        v10.setTextSize(txtSize);
 
 
         TextView v11 = new TextView(getContext());
@@ -189,7 +188,7 @@ public class CustomTable extends FrameLayout {
         v11.setTextColor(Color.WHITE);
         v11.setBackgroundResource(R.drawable.bg_simple_bright);
         v11.setTypeface(face);
-        v11.setTextSize(20);
+        v11.setTextSize(txtSize);
 
 
         TextView v12 = new TextView(getContext());
@@ -198,7 +197,7 @@ public class CustomTable extends FrameLayout {
         v12.setTextColor(Color.WHITE);
         v12.setBackgroundResource(R.drawable.bg_simple_bright);
         v12.setTypeface(face);
-        v12.setTextSize(20);
+        v12.setTextSize(txtSize);
 
 
         TextView v13 = new TextView(getContext());
@@ -207,7 +206,7 @@ public class CustomTable extends FrameLayout {
         v13.setTextColor(Color.WHITE);
         v13.setBackgroundResource(R.drawable.bg_simple_bright);
         v13.setTypeface(face);
-        v13.setTextSize(20);
+        v13.setTextSize(txtSize);
 
 
         TextView v14 = new TextView(getContext());
@@ -216,7 +215,7 @@ public class CustomTable extends FrameLayout {
         v14.setTextColor(Color.WHITE);
         v14.setBackgroundResource(R.drawable.bg_simple_bright);
         v14.setTypeface(face);
-        v14.setTextSize(20);
+        v14.setTextSize(txtSize);
 
 
         TextView v15 = new TextView(getContext());
@@ -225,7 +224,7 @@ public class CustomTable extends FrameLayout {
         v15.setTextColor(Color.WHITE);
         v15.setBackgroundResource(R.drawable.bg_simple_bright);
         v15.setTypeface(face);
-        v15.setTextSize(20);
+        v15.setTextSize(txtSize);
 
 
         TextView v16 = new TextView(getContext());
@@ -234,7 +233,7 @@ public class CustomTable extends FrameLayout {
         v16.setTextColor(Color.WHITE);
         v16.setBackgroundResource(R.drawable.bg_simple_bright);
         v16.setTypeface(face);
-        v16.setTextSize(20);
+        v16.setTextSize(txtSize);
 
 
         TextView v17 = new TextView(getContext());
@@ -243,7 +242,7 @@ public class CustomTable extends FrameLayout {
         v17.setTextColor(Color.WHITE);
         v17.setBackgroundResource(R.drawable.bg_simple_bright);
         v17.setTypeface(face);
-        v17.setTextSize(20);
+        v17.setTextSize(txtSize);
 
         TextView v18 = new TextView(getContext());
         addView(v18, initLayoutParams(12* width,0, width,marginTop));
@@ -251,7 +250,7 @@ public class CustomTable extends FrameLayout {
         v18.setTextColor(Color.WHITE);
         v18.setBackgroundResource(R.drawable.bg_simple_bright);
         v18.setTypeface(face);
-        v18.setTextSize(20);
+        v18.setTextSize(txtSize);
 
 
         TextView v19 = new TextView(getContext());
@@ -260,7 +259,7 @@ public class CustomTable extends FrameLayout {
         v19.setTextColor(Color.WHITE);
         v19.setBackgroundResource(R.drawable.bg_simple_bright);
         v19.setTypeface(face);
-        v19.setTextSize(20);
+        v19.setTextSize(txtSize);
 
 
 //        View v2 = new View(getContext());
