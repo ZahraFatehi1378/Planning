@@ -3,6 +3,7 @@ package com.example.myapplication.recycler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,12 @@ public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesList
 
     private ArrayList<String> mainCourses;
     private OnStringItemClickListener onItemClickListener;
+    private Integer[] images;
 
 
-    public MainCoursesListAdaptor(ArrayList<String> mainCourses) {
+    public MainCoursesListAdaptor(ArrayList<String> mainCourses, Integer[] images) {
         this.mainCourses = mainCourses;
+        this.images = images;
     }
 
     @NonNull
@@ -33,6 +36,7 @@ public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesList
     @Override
     public void onBindViewHolder(@NonNull MainCoursesListAdaptor.MyHolder holder, int position) {
         holder.courseTV.setText(mainCourses.get(position));
+        holder.imageView.setImageResource(images[position]);
 
     }
 
@@ -47,10 +51,12 @@ public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesList
 
     public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView courseTV;
+        ImageView imageView;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             courseTV = itemView.findViewById(R.id.category_course_name);
+            imageView = itemView.findViewById(R.id.image);
             itemView.setOnClickListener(this);
         }
 

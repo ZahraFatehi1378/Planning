@@ -2,6 +2,7 @@ package com.example.myapplication.ui.fragments.planning;
 
 ;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -69,7 +70,12 @@ public class PlanningListFragment extends Fragment {
 
     private void addMainCoursesRecycler(View view) {
         mainCoursesRecyclerView = view.findViewById(R.id.mainCoursesRecyclerView);
-        MainCoursesListAdaptor mainCoursesListAdaptor = new MainCoursesListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames);
+        Integer[] images = {
+                R.drawable.omomi, R.drawable.fac,
+                R.drawable.math, R.drawable.physics,
+                R.drawable.english, R.drawable.sport,
+        };
+        MainCoursesListAdaptor mainCoursesListAdaptor = new MainCoursesListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames , images);
         mainCoursesListAdaptor.setOnItemClickListener(pos -> {
             Bundle bundle = new Bundle();
             bundle.putString("myCourse", ((PlaningActivity) requireActivity()).coursesCategoryNames.get(pos));
@@ -100,7 +106,6 @@ public class PlanningListFragment extends Fragment {
         planingRecyclerView.setAdapter(planingListAdaptor);
         planingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-
 
 
 }
