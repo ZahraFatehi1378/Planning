@@ -5,11 +5,8 @@ import static android.content.DialogInterface.BUTTON_POSITIVE;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.os.Bundle;
 import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,9 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.myapplication.PlaningActivity;
@@ -27,36 +21,33 @@ import com.example.myapplication.R;
 import com.example.myapplication.db.PlanningDataBase;
 import com.example.myapplication.model.Course;
 import com.example.myapplication.ui.dialogs.TakePlanningDialog;
+import com.example.myapplication.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class CoursesListFragment extends Fragment {
+
+public class CoursesListFragment extends BaseFragment {
 
     private TextView startTime, endTime, startExam, endExam, categoryName, days;
     private EditText instructor, courseName, examDay, examMonth;
-    private View view;
     private Button addCourse;
     private ImageView back;
     private ImageView list;
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_courses_list, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        this.view = view;
+    public void onViewCreated() {
         init();
         addListener();
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
+    }
 
+    @Override
+    public int layout() {
+        return R.layout.fragment_courses_list;
     }
 
 
@@ -112,13 +103,14 @@ public class CoursesListFragment extends Fragment {
 
         addCourse.setOnClickListener(v -> {
             if (checkFields()) {
-                PlanningDataBase.getInstance(getContext()).CourseDAO().insertCourse
+                Toast.makeText(getContext(), "درس با موفقیت اضافه شد", Toast.LENGTH_SHORT).show();
+                compositeDisposable.add(PlanningDataBase.getInstance(getContext()).CourseDAO().insertCourse
                         (new Course(0, ((PlaningActivity) requireActivity()).coursesCategoryNames.indexOf(categoryName.getText().toString())
                                 , courseName.getText().toString().trim(), instructor.getText().toString().trim()
                                 , new ArrayList<>(Arrays.asList(days.getText().toString().split(","))), startTime.getText().toString()
                                 , endTime.getText().toString().trim(), startExam.getText().toString().trim()
-                                , endExam.getText().toString().trim(), examDay.getText().toString().trim(), examMonth.getText().toString().trim(), ""));
-                Toast.makeText(getContext(), "درس با موفقیت اضافه شد", Toast.LENGTH_SHORT).show();
+                                , endExam.getText().toString().trim(), examDay.getText().toString().trim(), examMonth.getText().toString().trim(), ""))
+                        .subscribeOn(Schedulers.io()).subscribe());
             }
         });
 
@@ -137,14 +129,18 @@ public class CoursesListFragment extends Fragment {
     }
 
     private boolean checkFields() {
-        try {
-            Integer.parseInt(examDay.getText().toString());
-            Integer.parseInt(examMonth.getText().toString());
-        } catch (NumberFormatException e) {
-            Toast.makeText(getContext(), "روز و ماه باید عدد باشند", Toast.LENGTH_SHORT).show();
+        if (
+        !startTime.getText().toString().trim().contains(":")&&
+        !endTime.getText().toString().trim().contains(":")&&
+        !startExam.getText().toString().trim().contains(":")&&
+        !endExam.getText().toString().trim().contains(":")
+        )
+
+        {
+            Toast.makeText(getContext(), "ساعت را وارد کنید", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (courseName.getText().toString().trim().equals(""))
+        else if (courseName.getText().toString().trim().equals(""))
             Toast.makeText(getContext(), "نام درس را وارد کنید", Toast.LENGTH_SHORT).show();
         else if (Integer.parseInt(examDay.getText().toString().trim()) > 31)
             Toast.makeText(getContext(), "روز امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
@@ -154,14 +150,6 @@ public class CoursesListFragment extends Fragment {
             Toast.makeText(getContext(), "نام استاد درس را وارد کنید", Toast.LENGTH_SHORT).show();
         else if (!days.getText().toString().trim().contains("شنبه"))
             Toast.makeText(getContext(), "روز های ارائه درس را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (startTime.getText().toString().matches(".\\d+"))
-            Toast.makeText(getContext(), "ساعت شروع ارائه درس را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (endTime.getText().toString().trim().matches(".\\d+"))
-            Toast.makeText(getContext(), "ساعت پایان ارائه درس را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (startExam.getText().toString().trim().matches(".\\d+"))
-            Toast.makeText(getContext(), "ساعت شروع امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (endExam.getText().toString().trim().matches(".\\d+"))
-            Toast.makeText(getContext(), "ساعت پایان امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
         else if (PlanningDataBase.getInstance(getContext()).CourseDAO().
                 courseExist(courseName.getText().toString().trim(), instructor.getText().toString().trim(),
                         startTime.getText().toString().trim(), endTime.getText().toString().trim(),

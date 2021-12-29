@@ -5,19 +5,15 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,27 +25,25 @@ import com.example.myapplication.db.PlanningDataBase;
 import com.example.myapplication.model.MyPlanning;
 import com.example.myapplication.recycler.MainCoursesListAdaptor;
 import com.example.myapplication.recycler.PlaningListAdaptor;
+import com.example.myapplication.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class PlanningListFragment extends Fragment {
+
+public class PlanningListFragment extends BaseFragment {
 
     private RecyclerView planingRecyclerView;
     private RecyclerView mainCoursesRecyclerView;
     private LinearLayout addPlaningView;
+    private ImageView info;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_planning_list, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewCreated() {
         init(view);
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
@@ -58,10 +52,22 @@ public class PlanningListFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
+    }
 
+    @Override
+    public int layout() {
+        return R.layout.fragment_planning_list;
     }
 
     private void init(View view) {
+        info = view.findViewById(R.id.info);
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_infoFragment);
+
+            }
+        });
         addPlaningRecycler(view);
         addMainCoursesRecycler(view);
 
@@ -123,9 +129,13 @@ public class PlanningListFragment extends Fragment {
                         .setCancelable(true)
                         .setPositiveButton("بله", (dialog1, which) -> {
                             int position = viewHolder.getAdapterPosition();
+
+                            PlanningDataBase.getInstance(getContext()).planningDAO().deleteMyPlanning
+                                    (myPlannings.get(position).getId())
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread()).subscribe();
                             myPlanningsName.remove(position);
                             planingListAdaptor.notifyDataSetChanged();
-                            PlanningDataBase.getInstance(getContext()).planningDAO().deleteMyPlanning(myPlannings.get(position).getId());
                             Toast.makeText(getContext(), "انجام شد", Toast.LENGTH_SHORT).show();
 
                         })
@@ -136,7 +146,6 @@ public class PlanningListFragment extends Fragment {
                         })
 
                         .show();
-
                 Typeface face = ResourcesCompat.getFont(getContext(), R.font.font);
 
                 TextView textView = (TextView) x.findViewById(android.R.id.message);

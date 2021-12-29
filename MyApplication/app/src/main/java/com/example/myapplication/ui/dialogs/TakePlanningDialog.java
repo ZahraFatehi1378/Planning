@@ -24,6 +24,9 @@ import com.example.myapplication.recycler.PlanningsDetailListAdaptor;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
 public class TakePlanningDialog  {
 
     private PlanningsDetailListAdaptor planningsAdaptor;
@@ -106,9 +109,12 @@ public class TakePlanningDialog  {
                             .setCancelable(true)
                             .setPositiveButton("بله", (dialog1, which) -> {
                                 int position = viewHolder.getAdapterPosition();
+
+                                PlanningDataBase.getInstance(context).CourseDAO().deleteCourse(courses.get(position).getId())
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread()).subscribe();
                                 courses.remove(position);
                                 planningsAdaptor.notifyDataSetChanged();
-                                PlanningDataBase.getInstance(context).CourseDAO().deleteCourse(courses.get(position).getId());
                                 Toast.makeText(context, "انجام شد", Toast.LENGTH_SHORT).show();
 
                             })

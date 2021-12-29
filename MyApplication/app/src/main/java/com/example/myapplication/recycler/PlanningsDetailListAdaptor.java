@@ -40,9 +40,9 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.instructor.setText(plannings.get(position).getInstructor());
-        holder.planningCourseNameTV.setText("         "+plannings.get(position).getName()+"           ");
-        holder.daysOfWeek.setText(plannings.get(position).getDaysOfWeek()+"");
-        holder.examDate.setText(" امتحان: "+plannings.get(position).getStartTimeExam()+"-"+plannings.get(position).getEndTimeExam()+"    "+("1400"+"/"+plannings.get(position).getMonthOfExam() +"/"+plannings.get(position).getDayOfExam()) );
+        holder.planningCourseNameTV.setText(plannings.get(position).getName());
+        holder.daysOfWeek.setText(plannings.get(position).getDaysOfWeek().toString()+"");
+        holder.examDate.setText(" امتحان: "+plannings.get(position).getStartTimeExam()+"-"+plannings.get(position).getEndTimeExam()+"    "+("1401"+"/"+plannings.get(position).getMonthOfExam() +"/"+plannings.get(position).getDayOfExam()) );
         holder.class_time.setText(plannings.get(position).getStartTime()+"-"+plannings.get(position).getEndTime());
     }
 
@@ -55,13 +55,12 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
 
 
     public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView planningCourseNameTV, instructor, gender, daysOfWeek, examDate, class_time;
+        TextView planningCourseNameTV, instructor, daysOfWeek, examDate, class_time;
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             planningCourseNameTV = itemView.findViewById(R.id.planning_course_name);
             instructor = itemView.findViewById(R.id.instructor);
-            gender = itemView.findViewById(R.id.gender);
             daysOfWeek = itemView.findViewById(R.id.day_of_week);
             examDate = itemView.findViewById(R.id.exam_date);
             class_time = itemView.findViewById(R.id.class_time);

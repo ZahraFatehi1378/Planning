@@ -6,23 +6,16 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.PlaningActivity;
 import com.example.myapplication.R;
@@ -32,6 +25,7 @@ import com.example.myapplication.model.MyPlanning;
 import com.example.myapplication.recycler.OnStringClickListener;
 import com.example.myapplication.recycler.StringsListAdaptor;
 import com.example.myapplication.ui.dialogs.TakePlanningDialog;
+import com.example.myapplication.ui.fragments.BaseFragment;
 import com.example.myapplication.ui.table.CustomCourseTableListener;
 import com.example.myapplication.ui.table.CustomTable;
 
@@ -39,32 +33,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class PlanningFragment extends Fragment {
+
+public class PlanningFragment extends BaseFragment {
     private RecyclerView coursesCategoryRecyclerView;
     private CustomTable customTable;
     private ArrayList<Course> userTempPlanning;
     private Bundle bundle;
     private ArrayList<Course> bundleArray;
-    private View view;
+
     int id;
     private Button button;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_planning, container, false);
 
+    @Override
+    public int layout() {
+        return R.layout.fragment_planning;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        this.view = view;
+    public void onViewCreated() {
         init(view);
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
-
     }
+
 
     private void init(View view) {
         customTable = view.findViewById(R.id.customTable);
@@ -78,6 +72,7 @@ public class PlanningFragment extends Fragment {
         });
 
     }
+
 
     private void checkBundle() {
         bundle = getArguments();
@@ -98,6 +93,34 @@ public class PlanningFragment extends Fragment {
     }
 
 
+//    private void checkBundle() {
+//        bundle = getArguments();
+//        if (bundle != null) {
+//            bundleArray = new ArrayList();
+//            id = bundle.getInt("planningId");
+//
+//            compositeDisposable.add(PlanningDataBase.getInstance(getContext()).planningDAO().getMyPlanning(id).subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(myPlanning -> {
+//                        for (String s : myPlanning.getPlannings()) {
+//                            compositeDisposable.add(PlanningDataBase.getInstance(getContext()).CourseDAO().getCourse(Integer.parseInt(s))
+//                                    .subscribeOn(Schedulers.io())
+//                                    .observeOn(AndroidSchedulers.mainThread())
+//                                    .subscribe(course -> {
+//                                        userTempPlanning.add(course);
+//                                        bundleArray.add(course);
+//                                    }));
+//                        }
+//                        for (Course course : userTempPlanning) {
+//                            if (course != null)
+//                                addPlan(course);
+//                        }
+//                    }));
+//
+//
+//        }
+//    }
+
 
     private void addRecycler(View view) {
         //add faculties
@@ -106,40 +129,42 @@ public class PlanningFragment extends Fragment {
 
             @Override
             public void onItemClickedPos(int pos) {
-                List<Course> tempPlanning = PlanningDataBase.getInstance(getContext()).CourseDAO().getCourseByCategory(pos);
-                if (tempPlanning != null) {
-                    TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning , true);
-                    takePlanningDialog.setAddPlanningListener(planning -> {
+                compositeDisposable.add(PlanningDataBase.getInstance(getContext()).CourseDAO().getCourseByCategory(pos).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe(courses -> {
+                            List<Course> tempPlanning = courses;
+                            if (tempPlanning != null) {
+                                TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning, true);
+                                takePlanningDialog.setAddPlanningListener(planning -> {
+                                    int flag = 0;
+                                    System.out.println(userTempPlanning.size());
+                                    for (Course planning1 : userTempPlanning) {
+                                        if (planning1.getId() != planning.getId()
+                                                && checkTimes(planning, planning1)) {
+                                            Toast.makeText(getContext(), " تداخل زمانی ", Toast.LENGTH_SHORT).show();
+                                            flag = 1;
+                                        }
+                                    }
 
-                        int flag = 0;
-                        System.out.println(userTempPlanning.size());
-                        for (Course planning1 : userTempPlanning) {
-                            if (planning1.getId() != planning.getId()
-                                    && checkTimes(planning, planning1)) {
-                                Toast.makeText(getContext(), " تداخل زمانی ", Toast.LENGTH_SHORT).show();
-                                flag = 1;
+                                    for (Course planning1 : userTempPlanning) {
+                                        if (planning1.getId() != planning.getId()
+                                                && checkExamTimes(planning, planning1)) {
+                                            Toast.makeText(getContext(), " تداخل امتحانی " + planning.getId(), Toast.LENGTH_SHORT).show();
+                                            flag = 1;
+                                        }
+                                    }
+
+
+                                    if (flag == 0 && planning != null) {
+                                        addPlan(planning);
+                                        userTempPlanning.add(planning);
+                                        Toast.makeText(getContext(), "اضافه شد", Toast.LENGTH_SHORT).show();
+                                    }
+
+
+                                });
                             }
-                        }
 
-                        for (Course planning1 : userTempPlanning) {
-                            if (planning1.getId() != planning.getId()
-                                    && checkExamTimes(planning, planning1)) {
-                                Toast.makeText(getContext(), " تداخل امتحانی " + planning.getId(), Toast.LENGTH_SHORT).show();
-                                flag = 1;
-                            }
-                        }
-
-
-                        if (flag == 0 && planning != null) {
-                            addPlan(planning);
-                            userTempPlanning.add(planning);
-                            Toast.makeText(getContext(), "اضافه شد", Toast.LENGTH_SHORT).show();
-                        }
-
-
-                    });
-                }
-
+                        }));
             }
 
         }));
@@ -361,7 +386,8 @@ public class PlanningFragment extends Fragment {
                                             PlanningDataBase.getInstance(getContext()).planningDAO().updatePlanning(x, id);
 
                                         } else {
-                                            PlanningDataBase.getInstance(getContext()).planningDAO().insertMyPlanning(new MyPlanning(0, "برنامه", x));
+                                            PlanningDataBase.getInstance(getContext()).planningDAO()
+                                                    .insertMyPlanning(new MyPlanning(0, "برنامه", x)).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
                                         }
                                         Toast.makeText(getContext(), "افزوده شد", Toast.LENGTH_SHORT).show();
                                         {
@@ -410,14 +436,6 @@ public class PlanningFragment extends Fragment {
         private boolean checkBundleArray() {
 
             if (bundleArray != null) {
-//                for (Planning planning1 : userTempPlanning) {
-//                    for (Planning planning2 : bundleArray) {
-//                        System.out.println(planning1.getId() +"                          "+planning2.getId());
-//                        if (planning1.getId() != planning2.getId()) {
-//                            return false;
-//                        }
-//                    }
-//                }
                 if (userTempPlanning.equals(bundleArray))
                     return true;
 
