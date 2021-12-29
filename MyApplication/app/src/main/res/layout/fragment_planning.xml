@@ -7,41 +7,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.planning.PlanningFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/faculties_recycler2"
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="60sp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_simple_dark"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courses_recycler2"
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/faculties_recycler2" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/categories_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="24dp"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
+
+    </LinearLayout>
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="84dp"
         android:layout_weight="1"
         android:fillViewport="true"
         android:layoutDirection="rtl"
         android:scrollbarStyle="outsideInset"
         android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courses_recycler2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <com.example.myapplication.ui.table.CustomTable
             android:id="@+id/customTable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/bg_simple_corner"
+        android:fontFamily="@font/font"
+        android:text="ذخیره برنامه ریزی"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="21dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

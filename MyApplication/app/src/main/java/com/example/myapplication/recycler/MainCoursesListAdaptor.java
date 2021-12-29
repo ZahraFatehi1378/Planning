@@ -9,14 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+
 import java.util.ArrayList;
 
 public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesListAdaptor.MyHolder> {
 
 
-
     private ArrayList<String> mainCourses;
-    private OnAllCoursesItemClickListener onItemClickListener;
+    private OnStringItemClickListener onItemClickListener;
 
 
     public MainCoursesListAdaptor(ArrayList<String> mainCourses) {
@@ -40,8 +40,14 @@ public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesList
     public int getItemCount() {
         return mainCourses.size();
     }
-    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView courseTV ;
+
+    public void setOnItemClickListener(OnStringItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView courseTV;
+
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             courseTV = itemView.findViewById(R.id.category_course_name);
@@ -50,8 +56,8 @@ public class MainCoursesListAdaptor extends RecyclerView.Adapter<MainCoursesList
 
         @Override
         public void onClick(View v) {
-            if (onItemClickListener != null ) {
-              //  onItemClickListener.onItemClicked(mainCourses.get(getAdapterPosition()));
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClicked(getAdapterPosition());
             }
         }
     }

@@ -70,6 +70,11 @@ public class PlanningListFragment extends Fragment {
     private void addMainCoursesRecycler(View view) {
         mainCoursesRecyclerView = view.findViewById(R.id.mainCoursesRecyclerView);
         MainCoursesListAdaptor mainCoursesListAdaptor = new MainCoursesListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames);
+        mainCoursesListAdaptor.setOnItemClickListener(pos -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("myCourse", ((PlaningActivity) requireActivity()).coursesCategoryNames.get(pos));
+            Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_coursesListFragment, bundle);
+        });
         mainCoursesRecyclerView.setAdapter(mainCoursesListAdaptor);
         mainCoursesRecyclerView.setLayoutManager(new LinearLayoutManager((getContext()), LinearLayoutManager.HORIZONTAL, true));
 
@@ -95,6 +100,7 @@ public class PlanningListFragment extends Fragment {
         planingRecyclerView.setAdapter(planingListAdaptor);
         planingRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
+
 
 
 }

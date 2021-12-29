@@ -4,192 +4,245 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout0"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main_bg"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/faculties_recycler"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60sp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/appBarLayout3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:background="@drawable/bg_option_box"-->
-<!--        android:layout_margin="5dp">-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/searchBar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="left"-->
-<!--            android:layout_marginStart="12dp"-->
-<!--            android:layout_marginLeft="12dp"-->
-<!--            android:hint="نام درس را جست و جو کنید"-->
-<!--            android:textColor="?android:textColorPrimary"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/appBarLayout3"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/appBarLayout3" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="45sp"-->
-<!--            android:layout_height="45sp"-->
-<!--            android:src="@drawable/ic_search"-->
-<!--            android:padding="10dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/searchBar"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        app:layout_constraintTop_toTopOf="parent">
 
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="48.dp"
+                android:layout_height="48.dp"
+                android:src="@drawable/ic_info_circle"
+                app:tint="#000D24" />
+
+            <TextView
+                android:id="@+id/category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:text="درس"
+                android:textColor="#000D24"
+                android:textSize="36dp" />
+
+            <ImageView
+                android:layout_width="38.dp"
+                android:layout_height="38.dp"
+                android:background="@drawable/bg_simple_round_dark"
+                android:padding="10dp"
+                android:src="@drawable/ic_list"
+                app:tint="#707A86" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="اطلاعات مربوط به هر درس را در فیلد های زیر وارد کنید"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/font"
+            android:textSize="20dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/course_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:hint="نام درس"
+                android:padding="5dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_category_name" />
+
+            <EditText
+                android:id="@+id/instructor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:hint=" نام استاد"
+                android:padding="5dp"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت شروع کلاس"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت پایان کلاس"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_id" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/day_of_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/border"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="روز های برگزاری کلاس"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/start_exam_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت شروع امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/end_exam_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت پایان امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_id" />
+        </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/coursesRecyclerView"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="5dp"
+            >
+
+            <TextView
+                android:id="@+id/start_exam_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="روز امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/end_exam_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ماه امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_id" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/faculties_recycler" />
-
-
-    <TextView
-        android:id="@+id/course_name"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="21dp"
+        android:background="@drawable/bg_simple_corner"
+        android:text="وارد کردن اطلاعات درس"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="21dp"
+        android:layout_marginBottom="36dp"
         android:fontFamily="@font/font"
-
-        android:layout_marginEnd="16dp"
-        android:text=""
-        android:textColor="?android:textColorPrimary"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coursesRecyclerView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="      کد درس:"
-        android:fontFamily="@font/font"
-
-        android:textSize="20sp"
-        android:textColor="?android:textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/course_name"
-        />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/font"
-
-        android:text="تعداد واحد:"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/font"
-
-        android:text="پیش نیاز ها:"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/font"
-
-        android:layout_marginEnd="16dp"
-        android:text="      گروه یا بسته:"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/course_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/font"
-
-        android:layout_marginStart="16dp"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/credits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textSize="20sp"
-        android:fontFamily="@font/font"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/font"
-
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        android:textColor="?android:textColorPrimary"
-        />
-
-    <TextView
-        android:id="@+id/pre_req"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="20sp"
-        android:fontFamily="@font/font"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:textColor="?android:textColorPrimary"
-        />
-
-
-
+        android:textSize="24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

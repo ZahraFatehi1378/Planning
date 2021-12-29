@@ -23,5 +23,17 @@
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_out"
             app:popUpTo="@id/planningListFragment" />
+        <action
+            android:id="@+id/action_planningListFragment_to_coursesListFragment"
+            app:destination="@id/coursesListFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/planningListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/coursesListFragment"
+        android:name="com.example.myapplication.ui.fragments.courses.CoursesListFragment"
+        android:label="CoursesListFragment" />
 </navigation>

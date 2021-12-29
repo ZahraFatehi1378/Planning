@@ -42,7 +42,6 @@ import java.util.Iterator;
 
 
 public class PlanningFragment extends Fragment {
-    private ArrayList<String> mainCoursesList;
     private RecyclerView facultiesRecyclerView;
     private ArrayList<Course> tempCourses;
     private RecyclerView coursesRecycler;
@@ -58,15 +57,8 @@ public class PlanningFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mainCoursesList = new ArrayList<>();
         tempCourses = new ArrayList<>();
         tempPlanning = new ArrayList<>();
-        mainCoursesList.add("عمومی");
-        mainCoursesList.add("دانشکده");
-        mainCoursesList.add("ریاضی");
-        mainCoursesList.add("فیزیک");
-        mainCoursesList.add("زبان");
-        mainCoursesList.add("تربیت بدنی");
         return inflater.inflate(R.layout.fragment_planning, container, false);
 
     }
@@ -186,7 +178,7 @@ public class PlanningFragment extends Fragment {
     }
 
     private void addRecyclers(View view) {
-        coursesRecycler = view.findViewById(R.id.courses_recycler2);
+        coursesRecycler = view.findViewById(R.id.categories_recycler);
         //add courses
         CoursesListAdaptor ca = new CoursesListAdaptor(tempCourses, course -> {
             tempPlanning.clear();
@@ -208,7 +200,7 @@ public class PlanningFragment extends Fragment {
                         }
                     }
                     break;
-                case "دانشکده صنایع":
+                case "دانشکده":
                     for (Planning planning : ((PlaningActivity) requireActivity()).industrialPlannings) {
                         if (planning.getCourseId() == course.getId()) {
                             tempPlanning.add(planning);
@@ -279,8 +271,8 @@ public class PlanningFragment extends Fragment {
         coursesRecycler.setAdapter(ca);
 
         //add faculties
-        facultiesRecyclerView = view.findViewById(R.id.faculties_recycler2);
-        facultiesRecyclerView.setAdapter(new StringsListAdaptor(mainCoursesList, new OnStringClickListener() {
+        facultiesRecyclerView = view.findViewById(R.id.categories_recycler);
+        facultiesRecyclerView.setAdapter(new StringsListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames, new OnStringClickListener() {
             @Override
             public void onItemClicked(String string) {
                 tempCourses.clear();
@@ -523,18 +515,6 @@ public class PlanningFragment extends Fragment {
         }
         return newArray;
     }
-
-    protected void setBg(String sTheme) {
-        switch (sTheme) {
-            case "dark":
-                mainLayout.setBackgroundResource(R.drawable.dd);
-                break;
-            case "bright":
-                mainLayout.setBackgroundResource(R.drawable.db);
-                break;
-        }
-    }
-
 
     OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
         @Override
