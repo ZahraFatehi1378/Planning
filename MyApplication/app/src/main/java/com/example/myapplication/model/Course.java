@@ -1,19 +1,37 @@
 package com.example.myapplication.model;
 
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 
+@Entity
 public class Course {
-    private int id, categoryId;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @ColumnInfo
+    private int categoryId;
+    @ColumnInfo
     private String name;
+    @ColumnInfo
     private String instructor;
+    @ColumnInfo
     private ArrayList<String> daysOfWeek;
+    @ColumnInfo
     private String startTime;
+    @ColumnInfo
     private String endTime;
+    @ColumnInfo
     private String startTimeExam;
+    @ColumnInfo
     private String endTimeExam;
+    @ColumnInfo
     private String dayOfExam;
+    @ColumnInfo
     private String monthOfExam;
+    @ColumnInfo
     private String date;
 
     public Course(int id, int categoryId, String name, String instructor, ArrayList<String> daysOfWeek, String startTime, String endTime, String startTimeExam, String endTimeExam, String dayOfExam, String monthOfExam, String date) {
@@ -79,42 +97,4 @@ public class Course {
         return monthOfExam;
     }
 
-
-    //    protected CourseModel(Parcel in) {
-//        id = in.readInt();
-//        credits = in.readInt();
-//        name = in.readString();
-//        group = in.readString();
-//        type = in.readString();
-//        preReq = in.readArrayList(Integer.class.getClassLoader());
-//    }
-
-//    public static final Creator<Course> CREATOR = new Creator<Course>() {
-//        @Override
-//        public Course createFromParcel(Parcel in) {
-//            return new Course(in);
-//        }
-//
-//        @Override
-//        public Course[] newArray(int size) {
-//            return new Course[size];
-//        }
-//
-//    };
-//
-//
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeInt(id);
-//        dest.writeInt(credits);
-//        dest.writeString(name);
-//        dest.writeString(group);
-//        dest.writeString(type);
-//        dest.writeList(preReq);
-//    }
 }

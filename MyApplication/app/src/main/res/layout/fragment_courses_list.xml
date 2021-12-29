@@ -62,6 +62,19 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginVertical="5dp"
             >
+            <EditText
+                android:id="@+id/instructor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:hint=" نام استاد"
+                android:padding="5dp"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <EditText
                 android:id="@+id/course_name"
@@ -79,20 +92,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_category_name" />
 
-            <EditText
-                android:id="@+id/instructor_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:fontFamily="@font/font"
-                android:gravity="center"
-                android:hint=" نام استاد"
-                android:padding="5dp"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/instructor" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -100,6 +100,20 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="16dp">
+            <TextView
+                android:id="@+id/end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت پایان کلاس"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_id" />
 
             <TextView
                 android:id="@+id/start_time"
@@ -116,23 +130,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <TextView
-                android:id="@+id/end_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:fontFamily="@font/font"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="ساعت پایان کلاس"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/course_id" />
+
         </LinearLayout>
 
-        <TextView
+        <EditText
             android:id="@+id/day_of_week"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,7 +143,7 @@
             android:fontFamily="@font/font"
             android:gravity="center"
             android:padding="5dp"
-            android:text="روز های برگزاری کلاس"
+            android:hint="روز های برگزاری کلاس"
             android:textSize="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -152,6 +153,21 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/end_exam_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="ساعت پایان امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/course_id" />
 
             <TextView
                 android:id="@+id/start_exam_time"
@@ -168,20 +184,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <TextView
-                android:id="@+id/end_exam_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:fontFamily="@font/font"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="ساعت پایان امتحان"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/course_id" />
         </LinearLayout>
 
 
@@ -192,22 +194,7 @@
             android:layout_marginVertical="5dp"
             >
 
-            <TextView
-                android:id="@+id/exam_day"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/border"
-                android:fontFamily="@font/font"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="روز امتحان"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <TextView
+            <EditText
                 android:id="@+id/exam_month"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -217,15 +204,32 @@
                 android:fontFamily="@font/font"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="ماه امتحان"
+                android:hint="ماه امتحان"
                 android:textSize="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/course_id" />
+
+            <EditText
+                android:id="@+id/exam_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:fontFamily="@font/font"
+                android:gravity="center"
+                android:padding="5dp"
+                android:hint="روز امتحان"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/add_course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="21dp"

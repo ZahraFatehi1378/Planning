@@ -7,9 +7,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.example.myapplication.model.Course;
 import com.example.myapplication.model.MyPlanning;
 
-@Database(entities = { MyPlanning.class },version = 1)
+@Database(entities = { MyPlanning.class , Course.class},version = 2)
 @TypeConverters({Converters.class})
 public abstract class PlanningDataBase extends RoomDatabase {
 
@@ -17,6 +18,7 @@ public abstract class PlanningDataBase extends RoomDatabase {
 
 
     public abstract PlanningDAO planningDAO();
+    public abstract CourseDAO CourseDAO();
 
     public static PlanningDataBase getInstance(Context context) {
         if (instance == null)

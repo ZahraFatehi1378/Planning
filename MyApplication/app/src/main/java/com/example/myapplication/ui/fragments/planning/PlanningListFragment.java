@@ -35,7 +35,6 @@ public class PlanningListFragment extends Fragment {
     private RecyclerView planingRecyclerView;
     private RecyclerView mainCoursesRecyclerView;
     private LinearLayout addPlaningView;
-    private StringsListAdaptor stringsListAdaptor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,9 +49,7 @@ public class PlanningListFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-
+                getActivity().finish();
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);

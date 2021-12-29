@@ -21,6 +21,7 @@ import com.example.myapplication.model.Course;
 import com.example.myapplication.recycler.PlanningsDetailListAdaptor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TakePlanningDialog  {
 
@@ -31,7 +32,7 @@ public class TakePlanningDialog  {
         this.addPlanningListener = addPlanningListener;
     }
 
-    public TakePlanningDialog(@NonNull final Context context , ArrayList<Course> plannings ) {
+    public TakePlanningDialog(@NonNull final Context context , List<Course> plannings ) {
         final Dialog dialog = new Dialog(context);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

@@ -37,11 +37,11 @@ import com.example.myapplication.ui.table.CustomTable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class PlanningFragment extends Fragment {
     private RecyclerView coursesCategoryRecyclerView;
-    private ConstraintLayout mainLayout;
     private CustomTable customTable;
     private ArrayList<Course> userTempPlanning;
     private Bundle bundle;
@@ -59,7 +59,6 @@ public class PlanningFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainLayout = view.findViewById(R.id.mainLayout3);
         this.view = view;
         init(view);
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
@@ -80,25 +79,19 @@ public class PlanningFragment extends Fragment {
         if (bundle != null) {
             bundleArray = new ArrayList();
             id = bundle.getInt("planningId");
-            MyPlanning myPlanning = PlanningDataBase.getInstance(getContext()).planningDAO().getMyPlanning(id);
-            for (String s : myPlanning.getPlannings()) {
-                Course courseModel = findCourse(Integer.parseInt(s));
+            MyPlanning myCourses = PlanningDataBase.getInstance(getContext()).planningDAO().getMyPlanning(id);
+            for (String s : myCourses.getPlannings()) {
+                Course courseModel = PlanningDataBase.getInstance(getContext()).CourseDAO().getCourse(Integer.parseInt(s));
                 userTempPlanning.add(courseModel);
                 bundleArray.add(courseModel);
             }
             for (Course course : userTempPlanning) {
                 if (course != null)
-                addPlan(course);
+                    addPlan(course);
             }
         }
     }
 
-    private Course findCourse(Integer planningId) {
-        //todo a query to get courses by id
-
-        return null;
-
-    }
 
 
     private void addRecycler(View view) {
@@ -111,9 +104,7 @@ public class PlanningFragment extends Fragment {
 
             @Override
             public void onItemClickedPos(int pos) {
-//todo get courses by category id and show in dialog
-                //    ca.notifyDataSetChanged();
-                ArrayList<Course> tempPlanning = null;
+                List<Course> tempPlanning = PlanningDataBase.getInstance(getContext()).CourseDAO().getCourseByCategory(pos);
                 if (tempPlanning != null) {
                     TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning);
                     takePlanningDialog.setAddPlanningListener(planning -> {
@@ -393,7 +384,7 @@ public class PlanningFragment extends Fragment {
 
                         Typeface face = ResourcesCompat.getFont(getContext(), R.font.font);
 
-                        TextView textView = (TextView) dialog.findViewById(android.R.id.message);
+                        TextView textView =  dialog.findViewById(android.R.id.message);
                         textView.setTypeface(face);
                         textView.setTextColor(Color.BLACK);
 

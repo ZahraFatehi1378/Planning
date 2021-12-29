@@ -12,13 +12,14 @@ import com.example.myapplication.R;
 import com.example.myapplication.model.Course;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDetailListAdaptor.MyHolder> {
 
-    private ArrayList<Course> plannings;
+    private List<Course> plannings;
     private OnALlPlanningsItemClickListener onItemClickListener;
 
-    public PlanningsDetailListAdaptor(ArrayList<Course> plannings ) {
+    public PlanningsDetailListAdaptor(List<Course> plannings ) {
         this.plannings = plannings;
     }
 
