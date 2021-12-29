@@ -10,19 +10,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Course;
-import com.example.myapplication.model.Planning;
 
 import java.util.ArrayList;
 
 public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDetailListAdaptor.MyHolder> {
 
-    private ArrayList<Planning> plannings;
+    private ArrayList<Course> plannings;
     private OnALlPlanningsItemClickListener onItemClickListener;
-    private Course course;
 
-    public PlanningsDetailListAdaptor(ArrayList<Planning> plannings , Course course) {
+    public PlanningsDetailListAdaptor(ArrayList<Course> plannings ) {
         this.plannings = plannings;
-        this.course = course;
     }
 
     public void setOnItemClickListener(OnALlPlanningsItemClickListener onItemClickListener) {
@@ -39,8 +36,7 @@ public class PlanningsDetailListAdaptor extends RecyclerView.Adapter<PlanningsDe
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.instructor.setText(plannings.get(position).getInstructor());
-        holder.planningCourseNameTV.setText("         "+course.getName()+"           ");
-        holder.gender.setText(plannings.get(position).getGender());
+        holder.planningCourseNameTV.setText("         "+plannings.get(position).getName()+"           ");
         holder.daysOfWeek.setText(plannings.get(position).getDaysOfWeek()+"");
         holder.examDate.setText(" امتحان: "+plannings.get(position).getStartTimeExam()+"-"+plannings.get(position).getEndTimeExam()+"    "+("1400"+"/"+plannings.get(position).getMonthOfExam() +"/"+plannings.get(position).getDayOfExam()) );
         holder.class_time.setText(plannings.get(position).getStartTime()+"-"+plannings.get(position).getEndTime());

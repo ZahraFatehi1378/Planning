@@ -9,8 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.model.Course;
-import com.example.myapplication.model.Planning;
+
 
 import java.util.ArrayList;
 

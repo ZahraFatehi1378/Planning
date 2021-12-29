@@ -1,7 +1,7 @@
 package com.example.myapplication.ui.dialogs;
 
-import com.example.myapplication.model.Planning;
+import com.example.myapplication.model.Course;
 
 public interface AddPlanningListener {
-    void addPlanning(Planning planning);
+    void addPlanning(Course planning);
 }

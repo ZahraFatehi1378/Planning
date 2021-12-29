@@ -40,9 +40,6 @@ public class MyPlanning {
 
     public ArrayList<String> getPlannings() {
         return plannings;
-    }
+    }//get chosen courses
 
-    public void setPlannings(ArrayList<String> plannings) {
-        this.plannings = plannings;
-    }
 }

@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.Course;
-import com.example.myapplication.model.Planning;
 import com.example.myapplication.recycler.PlanningsDetailListAdaptor;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class TakePlanningDialog  {
         this.addPlanningListener = addPlanningListener;
     }
 
-    public TakePlanningDialog(@NonNull final Context context , ArrayList<Planning> plannings , Course course) {
+    public TakePlanningDialog(@NonNull final Context context , ArrayList<Course> plannings ) {
         final Dialog dialog = new Dialog(context);
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -40,17 +39,17 @@ public class TakePlanningDialog  {
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.take_planning_dialog);
         RecyclerView recyclerView = dialog.findViewById(R.id.planningRecyclerView2);
-        planningsAdaptor = new PlanningsDetailListAdaptor(plannings , course);
+        planningsAdaptor = new PlanningsDetailListAdaptor(plannings );
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(planningsAdaptor);
 
         planningsAdaptor.setOnItemClickListener(planning -> {
             // Continue with delete operation
             AlertDialog x = new AlertDialog.Builder(context)
-                    .setMessage(course.getName()+" \n "+planning.getStartTime()+"-"+planning.getEndTime()+" "+planning.getDaysOfWeek()
+                    .setMessage(planning.getName()+" \n "+planning.getStartTime()+"-"+planning.getEndTime()+" "+planning.getDaysOfWeek()
                     +"\n"+planning.getStartTimeExam()+"-"+planning.getEndTimeExam()+"___"
                             +("1400"+"/"+planning.getMonthOfExam() +"/"+planning.getDayOfExam())+"تاریخ و ساعت امتحان"+"\n"
-                    +planning.getInstructor() +"  ("+planning.getGender()+")")
+                    +planning.getInstructor())
                     .setCancelable(true)
                     .setPositiveButton("تایید", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog1, int which) {

@@ -29,8 +29,6 @@ import com.example.myapplication.R;
 import com.example.myapplication.db.PlanningDataBase;
 import com.example.myapplication.model.Course;
 import com.example.myapplication.model.MyPlanning;
-import com.example.myapplication.model.Planning;
-import com.example.myapplication.recycler.CoursesListAdaptor;
 import com.example.myapplication.recycler.OnStringClickListener;
 import com.example.myapplication.recycler.StringsListAdaptor;
 import com.example.myapplication.ui.dialogs.TakePlanningDialog;
@@ -42,23 +40,18 @@ import java.util.Iterator;
 
 
 public class PlanningFragment extends Fragment {
-    private RecyclerView facultiesRecyclerView;
-    private ArrayList<Course> tempCourses;
-    private RecyclerView coursesRecycler;
+    private RecyclerView coursesCategoryRecyclerView;
     private ConstraintLayout mainLayout;
     private CustomTable customTable;
-    private ArrayList<Planning> tempPlanning;
-    private ArrayList<Planning> userTempPlanning;
+    private ArrayList<Course> userTempPlanning;
     private Bundle bundle;
-    private ArrayList<Planning> bundleArray;
+    private ArrayList<Course> bundleArray;
     private View view;
     int id;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        tempCourses = new ArrayList<>();
-        tempPlanning = new ArrayList<>();
         return inflater.inflate(R.layout.fragment_planning, container, false);
 
     }
@@ -67,7 +60,6 @@ public class PlanningFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainLayout = view.findViewById(R.id.mainLayout3);
-      //  setBg(Utils.sTheme);
         this.view = view;
         init(view);
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
@@ -76,11 +68,10 @@ public class PlanningFragment extends Fragment {
 
     private void init(View view) {
         customTable = view.findViewById(R.id.customTable);
-     //   customTable.setTheme(Utils.sTheme);
         userTempPlanning = new ArrayList<>();
 
         checkBundle();
-        addRecyclers(view);
+        addRecycler(view);
 
     }
 
@@ -89,223 +80,72 @@ public class PlanningFragment extends Fragment {
         if (bundle != null) {
             bundleArray = new ArrayList();
             id = bundle.getInt("planningId");
-            for (String s : bundle.getStringArrayList("myPlanning")) {
-                Planning x = findPlanning(Integer.parseInt(s));
-                userTempPlanning.add(x);
-                bundleArray.add(x);
+            MyPlanning myPlanning = PlanningDataBase.getInstance(getContext()).planningDAO().getMyPlanning(id);
+            for (String s : myPlanning.getPlannings()) {
+                Course courseModel = findCourse(Integer.parseInt(s));
+                userTempPlanning.add(courseModel);
+                bundleArray.add(courseModel);
             }
-            for (Planning planning : userTempPlanning) {
-                addPlan(planning, findCourse(planning));
+            for (Course course : userTempPlanning) {
+                if (course != null)
+                addPlan(course);
             }
         }
     }
 
-    private Planning findPlanning(Integer planningId) {
-        for (Planning planning : (((PlaningActivity) requireActivity()).physicPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
-        for (Planning planning : (((PlaningActivity) requireActivity()).SportPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
-        for (Planning planning : (((PlaningActivity) requireActivity()).mathPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
-        for (Planning planning : (((PlaningActivity) requireActivity()).englishPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
-        for (Planning planning : (((PlaningActivity) requireActivity()).industrialPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
-        for (Planning planning : (((PlaningActivity) requireActivity()).generalPlannings)) {
-            if (planning.getId() == planningId) {
-                return planning;
-            }
-        }
+    private Course findCourse(Integer planningId) {
+        //todo a query to get courses by id
+
         return null;
 
     }
 
-    private Course findCourse(Planning planning) {
 
-        for (Course course : (((PlaningActivity) requireActivity()).physicCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        for (Course course : (((PlaningActivity) requireActivity()).mathCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        for (Course course : (((PlaningActivity) requireActivity()).englishCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        for (Course course : (((PlaningActivity) requireActivity()).industrialCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        for (Course course : (((PlaningActivity) requireActivity()).sportCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        for (Course course : (((PlaningActivity) requireActivity()).generalCourses)) {
-            if (course.getId() == planning.getCourseId()) {
-                return course;
-            }
-
-        }
-        return null;
-
-    }
-
-    private void addRecyclers(View view) {
-        coursesRecycler = view.findViewById(R.id.categories_recycler);
-        //add courses
-        CoursesListAdaptor ca = new CoursesListAdaptor(tempCourses, course -> {
-            tempPlanning.clear();
-            System.out.println("++++++++++"+course.getGroup()+"+++++++++++");
-            if (course.getGroup().contains("زبان")) {
-
-                for (Planning planning : ((PlaningActivity) requireActivity()).englishPlannings) {
-                    if (planning.getCourseId() == course.getId()) {
-                        tempPlanning.add(planning);
-                    }
-                }
-            }
-            switch (course.getGroup().trim()) {
-
-                case "عمومی":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).generalPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
-                case "دانشکده":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).industrialPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
-                case "فیزیک":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).physicPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
-                case "ریاضی":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).mathPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
-
-                case "تربیت بدنی":
-                    for (Planning planning : ((PlaningActivity) requireActivity()).SportPlannings) {
-                        if (planning.getCourseId() == course.getId()) {
-                            tempPlanning.add(planning);
-                        }
-                    }
-                    break;
-
-
-
-            }
-
-            if (tempPlanning != null) {
-                TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning, course);
-                takePlanningDialog.setAddPlanningListener(planning -> {
-
-                    int flag = 0 ;
-                    System.out.println(userTempPlanning.size());
-                    for (Planning planning1:userTempPlanning){
-                        if (planning1.getId() != planning.getId()
-                                &&  checkTimes(planning , planning1)){
-                            Toast.makeText(getContext() , " تداخل زمانی ", Toast.LENGTH_SHORT).show();
-                            flag = 1;
-                        }
-                    }
-
-                    for (Planning planning1:userTempPlanning){
-                        if (planning1.getId() != planning.getId()
-                                &&  checkExamTimes(planning , planning1)){
-                            Toast.makeText(getContext() , " تداخل امتحانی "+planning.getId(), Toast.LENGTH_SHORT).show();
-                            flag = 1;
-                        }
-                    }
-
-
-                    System.out.println(planning.getInstructor()+"PPPPPPPPPPPP");
-                    if (flag == 0) {
-                        addPlan(planning, course);
-                        userTempPlanning.add(planning);
-                        Toast.makeText(getContext() , "اضافه شد" , Toast.LENGTH_SHORT).show();
-                    }
-
-
-                });
-            }
-        });
-        coursesRecycler.setAdapter(ca);
-
+    private void addRecycler(View view) {
         //add faculties
-        facultiesRecyclerView = view.findViewById(R.id.categories_recycler);
-        facultiesRecyclerView.setAdapter(new StringsListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames, new OnStringClickListener() {
+        coursesCategoryRecyclerView = view.findViewById(R.id.categories_recycler);
+        coursesCategoryRecyclerView.setAdapter(new StringsListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames, new OnStringClickListener() {
             @Override
             public void onItemClicked(String string) {
-                tempCourses.clear();
-                switch (string) {
-                    case "عمومی":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).generalCourses);
-                        break;
-                    case "دانشکده صنایع":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).industrialCourses);
-                        break;
-                    case "فیزیک":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).physicCourses);
-
-                        break;
-                    case "ریاضی":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).mathCourses);
-
-                        break;
-                    case "زبان":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).englishCourses);
-
-                        break;
-                    case "تربیت بدنی":
-                        tempCourses.addAll(((PlaningActivity) requireActivity()).sportCourses);
-
-                        break;
-                }
-
-                ca.notifyDataSetChanged();
             }
 
             @Override
             public void onItemClickedPos(int pos) {
+//todo get courses by category id and show in dialog
+                //    ca.notifyDataSetChanged();
+                ArrayList<Course> tempPlanning = null;
+                if (tempPlanning != null) {
+                    TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning);
+                    takePlanningDialog.setAddPlanningListener(planning -> {
+
+                        int flag = 0;
+                        System.out.println(userTempPlanning.size());
+                        for (Course planning1 : userTempPlanning) {
+                            if (planning1.getId() != planning.getId()
+                                    && checkTimes(planning, planning1)) {
+                                Toast.makeText(getContext(), " تداخل زمانی ", Toast.LENGTH_SHORT).show();
+                                flag = 1;
+                            }
+                        }
+
+                        for (Course planning1 : userTempPlanning) {
+                            if (planning1.getId() != planning.getId()
+                                    && checkExamTimes(planning, planning1)) {
+                                Toast.makeText(getContext(), " تداخل امتحانی " + planning.getId(), Toast.LENGTH_SHORT).show();
+                                flag = 1;
+                            }
+                        }
+
+
+                        if (flag == 0 && planning != null) {
+                            addPlan(planning);
+                            userTempPlanning.add(planning);
+                            Toast.makeText(getContext(), "اضافه شد", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    });
+                }
 
             }
 
@@ -314,11 +154,10 @@ public class PlanningFragment extends Fragment {
 
             }
         }));
-        facultiesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
-        coursesRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
+        coursesCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, true));
     }
 
-    private void addPlan(Planning planning, Course course) {
+    private void addPlan(Course planning) {
         int startHour = 0, startMin = 0, endHour = 0, endMin = 0;
         String[] s = planning.getStartTime().split(":");
         String[] e = planning.getEndTime().split(":");
@@ -334,12 +173,12 @@ public class PlanningFragment extends Fragment {
         } else {
             endHour = Integer.parseInt(planning.getEndTime());
         }
-        setAPlan(planning.getId() ,course.getName() + "\n" + planning.getInstructor(), startHour, startMin, endHour, endMin, planning.getDaysOfWeek());
+        setAPlan(planning.getId(), planning.getName() + "\n" + planning.getInstructor(), startHour, startMin, endHour, endMin, planning.getDaysOfWeek());
 
     }
 
     //اگه تداخل داشت true
-    private boolean checkTimes(Planning planning, Planning planning1){
+    private boolean checkTimes(Course planning, Course planning1) {
         int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
         String[] s1 = planning1.getStartTime().split(":");
         String[] e1 = planning1.getEndTime().split(":");
@@ -366,24 +205,19 @@ public class PlanningFragment extends Fragment {
         }
 
         int flag = 0;
-        for (String day :planning.getDaysOfWeek()){
-            for (String day1:planning1.getDaysOfWeek()){
-                if (day.equals("شنبه") && day1.equals("شنبه")){
+        for (String day : planning.getDaysOfWeek()) {
+            for (String day1 : planning1.getDaysOfWeek()) {
+                if (day.equals("شنبه") && day1.equals("شنبه")) {
                     flag = 1;
-                }
-                else if (day.contains("یک") && day1.contains("یک")){
+                } else if (day.contains("یک") && day1.contains("یک")) {
                     flag = 1;
-                }
-                else if (day.contains("دو") && day1.contains("دو")){
+                } else if (day.contains("دو") && day1.contains("دو")) {
                     flag = 1;
-                }
-                else if (day.contains("سه") && day1.contains("سه")){
+                } else if (day.contains("سه") && day1.contains("سه")) {
                     flag = 1;
-                }
-                else if (day.contains("چهار") && day1.contains("چهار")){
+                } else if (day.contains("چهار") && day1.contains("چهار")) {
                     flag = 1;
-                }
-                else if (day.contains("پنج") && day1.contains("پنج")){
+                } else if (day.contains("پنج") && day1.contains("پنج")) {
                     flag = 1;
                 }
 
@@ -391,18 +225,18 @@ public class PlanningFragment extends Fragment {
         }
 
 
-        if (flag ==1 && startHour1 == startHour && startMin== startMin1)
+        if (flag == 1 && startHour1 == startHour && startMin == startMin1)
             return true;
 
 
-        if (flag ==1 &&(startHour1*60+startMin1 )<(startHour*60+startMin) &&
-                (endHour1*60+endMin1)>(startHour*60+startMin) ){
+        if (flag == 1 && (startHour1 * 60 + startMin1) < (startHour * 60 + startMin) &&
+                (endHour1 * 60 + endMin1) > (startHour * 60 + startMin)) {
             return true;
         }
         return false;
     }
 
-    private boolean checkExamTimes(Planning planning, Planning planning1){
+    private boolean checkExamTimes(Course planning, Course planning1) {
 
         int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
         String[] s1 = planning1.getStartTimeExam().split(":");
@@ -429,11 +263,11 @@ public class PlanningFragment extends Fragment {
             startHour = Integer.parseInt(planning.getStartTimeExam());
         }
 
-        if (startHour == 0)return false;
-        if ((startHour1*60+startMin1 )<(startHour*60+startMin)
-                && (endHour1*60+endMin1)>(startHour*60+startMin)
-        && planning.getDayOfExam() == planning1.getDayOfExam()
-        && planning.getMonthOfExam() == planning1.getMonthOfExam()){
+        if (startHour == 0) return false;
+        if ((startHour1 * 60 + startMin1) < (startHour * 60 + startMin)
+                && (endHour1 * 60 + endMin1) > (startHour * 60 + startMin)
+                && planning.getDayOfExam() == planning1.getDayOfExam()
+                && planning.getMonthOfExam() == planning1.getMonthOfExam()) {
             return true;
         }
         return false;
@@ -454,10 +288,10 @@ public class PlanningFragment extends Fragment {
                             .setCancelable(true)
                             .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog1, int which) {
-                                    Iterator<Planning> itr = userTempPlanning.iterator();
+                                    Iterator<Course> itr = userTempPlanning.iterator();
 
                                     while (itr.hasNext()) {
-                                        Planning element = itr.next();
+                                        Course element = itr.next();
                                         if (element.getId() == id) {
                                             userTempPlanning.remove(element);
                                             Toast.makeText(getContext(), "حذف شد", Toast.LENGTH_SHORT).show();
@@ -524,7 +358,7 @@ public class PlanningFragment extends Fragment {
                     if (!checkBundleArray()) {
 
                         ArrayList<String> x = new ArrayList<>();
-                        for (Planning planning : userTempPlanning) {
+                        for (Course planning : userTempPlanning) {
                             x.add(String.valueOf(planning.getId()));
                         }
 
@@ -534,10 +368,10 @@ public class PlanningFragment extends Fragment {
                                 .setPositiveButton("بله", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog1, int which) {
 
-                                        if (bundleArray != null){
-                                            PlanningDataBase.getInstance(getContext()).planningDAO().updatePlanning(x ,id );
+                                        if (bundleArray != null) {
+                                            PlanningDataBase.getInstance(getContext()).planningDAO().updatePlanning(x, id);
 
-                                        }else {
+                                        } else {
                                             PlanningDataBase.getInstance(getContext()).planningDAO().insertMyPlanning(new MyPlanning(0, "برنامه", x));
                                         }
                                         Toast.makeText(getContext(), "افزوده شد", Toast.LENGTH_SHORT).show();
@@ -596,7 +430,7 @@ public class PlanningFragment extends Fragment {
 //                    }
 //                }
                 if (userTempPlanning.equals(bundleArray))
-                return true;
+                    return true;
 
             } else {
                 return false;

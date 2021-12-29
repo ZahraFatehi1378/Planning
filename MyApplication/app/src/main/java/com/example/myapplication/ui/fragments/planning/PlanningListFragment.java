@@ -78,7 +78,7 @@ public class PlanningListFragment extends Fragment {
         MainCoursesListAdaptor mainCoursesListAdaptor = new MainCoursesListAdaptor(((PlaningActivity) requireActivity()).coursesCategoryNames , images);
         mainCoursesListAdaptor.setOnItemClickListener(pos -> {
             Bundle bundle = new Bundle();
-            bundle.putString("myCourse", ((PlaningActivity) requireActivity()).coursesCategoryNames.get(pos));
+            bundle.putString("category", ((PlaningActivity) requireActivity()).coursesCategoryNames.get(pos));
             Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_coursesListFragment, bundle);
         });
         mainCoursesRecyclerView.setAdapter(mainCoursesListAdaptor);
@@ -98,7 +98,6 @@ public class PlanningListFragment extends Fragment {
         planingListAdaptor.setOnItemClickListener(pos -> {
 
             Bundle bundle = new Bundle();
-            bundle.putStringArrayList("myPlanning", myPlannings.get(pos).getPlannings());
             bundle.putInt("planningId", myPlannings.get(pos).getId());
             Navigation.findNavController(view).navigate(R.id.action_planningListFragment_to_planningFragment, bundle);
         });
