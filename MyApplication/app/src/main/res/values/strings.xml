@@ -15,4 +15,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="hyperlink">Git<a href="https://github.com/ZahraFatehi1378/Planning"/></string>
+
 </resources>

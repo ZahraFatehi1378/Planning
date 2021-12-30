@@ -1,9 +1,11 @@
 package com.example.myapplication.ui.fragments.courses;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
@@ -37,8 +39,11 @@ public class InfoFragment extends Fragment {
         mViewPagerAdapter = new ViewPagerAdapter(getContext(), images);
         mViewPager.setAdapter(mViewPagerAdapter);
         requireActivity().getOnBackPressedDispatcher().addCallback(getActivity(), callback);
+        TextView linkTextView = view.findViewById(R.id.hl);
+        linkTextView.setMovementMethod(LinkMovementMethod.getInstance());
         return view;
     }
+
 
     OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
         @Override

@@ -43,7 +43,6 @@ public class PlanningFragment extends BaseFragment {
     private ArrayList<Course> userTempPlanning;
     private Bundle bundle;
     private ArrayList<Course> bundleArray;
-
     int id;
     private Button button;
 
@@ -83,6 +82,13 @@ public class PlanningFragment extends BaseFragment {
             for (String s : myCourses.getPlannings()) {
                 Course courseModel = PlanningDataBase.getInstance(getContext()).CourseDAO().getCourse(Integer.parseInt(s));
                 userTempPlanning.add(courseModel);
+                for (Course planning1 : userTempPlanning) {
+                    if (planning1 == null ) {
+                        Toast.makeText(getContext(),"در این برنامه درسی بوده که حذف شده و برنامه دیگر در دسترس نیست",Toast.LENGTH_LONG).show();
+                        Navigation.findNavController(view).popBackStack();
+                        return;
+                    }
+                }
                 bundleArray.add(courseModel);
             }
             for (Course course : userTempPlanning) {
@@ -136,7 +142,6 @@ public class PlanningFragment extends BaseFragment {
                                 TakePlanningDialog takePlanningDialog = new TakePlanningDialog(getContext(), tempPlanning, true);
                                 takePlanningDialog.setAddPlanningListener(planning -> {
                                     int flag = 0;
-                                    System.out.println(userTempPlanning.size());
                                     for (Course planning1 : userTempPlanning) {
                                         if (planning1.getId() != planning.getId()
                                                 && checkTimes(planning, planning1)) {
@@ -270,18 +275,37 @@ public class PlanningFragment extends BaseFragment {
 
         int startHour = 0, startMin = 0, endHour = 0, endMin = 0;
         String[] s = planning.getStartTimeExam().split(":");
+        String[] e = planning.getEndTimeExam().split(":");
         if (s.length == 2) {
             startHour = Integer.parseInt(s[0]);
             startMin = Integer.parseInt(s[1]);
         } else {
             startHour = Integer.parseInt(planning.getStartTimeExam());
         }
+        if (e.length == 2) {
+            endHour = Integer.parseInt(e[0]);
+            endMin = Integer.parseInt(e[1]);
+        } else {
+            endHour = Integer.parseInt(planning1.getEndTimeExam());
+        }
 
+        System.out.println(startHour +"  "+startMin+"  "+startHour1+"  "+startMin1);
         if (startHour == 0) return false;
+        if (startHour == startHour1 && startMin == startMin1 &&planning.getDayOfExam().equals(planning1.getDayOfExam())
+                && planning.getMonthOfExam().replace(" ","").equals(planning1.getMonthOfExam().replace(" ","")
+        ))
+            return true;
         if ((startHour1 * 60 + startMin1) < (startHour * 60 + startMin)
                 && (endHour1 * 60 + endMin1) > (startHour * 60 + startMin)
-                && planning.getDayOfExam() == planning1.getDayOfExam()
-                && planning.getMonthOfExam() == planning1.getMonthOfExam()) {
+                && planning.getDayOfExam().equals( planning1.getDayOfExam())
+                && planning.getMonthOfExam().equals(planning1.getMonthOfExam())){
+            return true;
+        }
+
+        if ((startHour * 60 + startMin) < (startHour1 * 60 + startMin1)
+                && (endHour * 60 + endMin) > (startHour1 * 60 + startMin1)
+                && planning.getDayOfExam().equals( planning1.getDayOfExam())
+                && planning.getMonthOfExam().equals(planning1.getMonthOfExam())){
             return true;
         }
         return false;
