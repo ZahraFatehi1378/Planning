@@ -257,6 +257,18 @@ public class PlanningFragment extends BaseFragment {
 
     private boolean checkExamTimes(Course planning, Course planning1) {
 
+        if (planning.getDayOfExam().equals("0") && planning.getMonthOfExam().equals("0")) {
+            return false;
+        }
+
+        try {
+            Integer.parseInt(planning.getStartTimeExam());
+            Integer.parseInt(planning.getEndTimeExam());
+        } catch (Exception e) {
+            return false;
+        }
+
+
         int startHour1 = 0, startMin1 = 0, endHour1 = 0, endMin1 = 0;
         String[] s1 = planning1.getStartTimeExam().split(":");
         String[] e1 = planning1.getEndTimeExam().split(":");

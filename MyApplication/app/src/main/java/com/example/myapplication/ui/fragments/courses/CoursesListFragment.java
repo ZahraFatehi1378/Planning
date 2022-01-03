@@ -129,23 +129,20 @@ public class CoursesListFragment extends BaseFragment {
     }
 
     private boolean checkFields() {
-        if (
-        !startTime.getText().toString().trim().contains(":")&&
-        !endTime.getText().toString().trim().contains(":")&&
-        !startExam.getText().toString().trim().contains(":")&&
-        !endExam.getText().toString().trim().contains(":")
-        )
 
-        {
-            Toast.makeText(getContext(), "ساعت را وارد کنید", Toast.LENGTH_SHORT).show();
+
+        if (
+                !startTime.getText().toString().trim().contains(":") ||
+                        !endTime.getText().toString().trim().contains(":")
+        ) {
+            Toast.makeText(getContext(), "ساعت ارائه را وارد کنید", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if (courseName.getText().toString().trim().equals(""))
+        } else if (courseName.getText().toString().trim().equals(""))
             Toast.makeText(getContext(), "نام درس را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (Integer.parseInt(examDay.getText().toString().trim()) > 31)
-            Toast.makeText(getContext(), "روز امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
-        else if (Integer.parseInt(examMonth.getText().toString().trim()) > 12)
-            Toast.makeText(getContext(), " ماه امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
+//        else if (Integer.parseInt(examDay.getText().toString().trim()) > 31)
+//            Toast.makeText(getContext(), "روز امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
+//        else if (Integer.parseInt(examMonth.getText().toString().trim()) > 12)
+//            Toast.makeText(getContext(), " ماه امتحان را وارد کنید", Toast.LENGTH_SHORT).show();
         else if (instructor.getText().toString().trim().equals(""))
             Toast.makeText(getContext(), "نام استاد درس را وارد کنید", Toast.LENGTH_SHORT).show();
         else if (!days.getText().toString().trim().contains("شنبه"))
@@ -158,6 +155,23 @@ public class CoursesListFragment extends BaseFragment {
             Toast.makeText(getContext(), "اطلاعات قبلا وارد شده است", Toast.LENGTH_SHORT).show();
         else {
             return true;
+        }
+
+        try {
+            if (Integer.parseInt(examDay.getText().toString().trim()) > 31) {
+                Toast.makeText(getContext(), "روز امتحان را درست وارد کنید", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            if (Integer.parseInt(examMonth.getText().toString().trim()) > 12) {
+                Toast.makeText(getContext(), " ماه امتحان را درست وارد کنید", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        } catch (Exception ignored) {
+            examDay.setText(0);
+            examMonth.setText(0);
+            startExam.setText(0);
+            endExam.setText(0);
+
         }
         return false;
     }
